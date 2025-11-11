@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🇪🇸 Irregular Verbs - Learning App</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%); color: #1f2937; min-height: 100vh; }
+        #app { width: 100%; min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 20px; }
+        .auth-container, .login-container, .menu-container, .exercise-container, .theory-container, .leaderboard-container, .results-container { background: white; border-radius: 12px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); padding: 40px; max-width: 900px; width: 100%; }
+        h1, h2, h3 { color: #1e3a8a; margin-bottom: 20px; }
+        h1 { font-size: 2.5em; text-align: center; }
+        .welcome-section { text-align: center; background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); padding: 20px; border-radius: 8px; margin-bottom: 30px; }
+        .welcome-name { font-size: 1.3em; color: #1e3a8a; }
+        .welcome-course { color: #6b7280; font-size: 1em; margin-top: 8px; }
+        .exercises-section { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-bottom: 30px; }
+        .exercise-card { background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); padding: 25px; border-radius: 12px; border-left: 5px solid #2563eb; }
+        .exercise-card h2 { color: #1e3a8a; font-size: 1.3em; }
+        .exercise-card p { color: #555; line-height: 1.5; margin: 8px 0; }
+        .description { font-size: 0.9em; font-style: italic; }
+        .score-display { display: flex; justify-content: space-between; padding: 10px; background: white; border-radius: 5px; margin: 15px 0; }
+        .score-number { font-size: 1.3em; font-weight: bold; color: #1e3a8a; }
+        .score-percent { font-size: 1.1em; color: #2563eb; font-weight: bold; }
+        .exercise-button { width: 100%; padding: 12px; background: #16a34a; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; font-size: 1em; margin-top: 10px; }
+        .exercise-button:hover { background: #15803d; }
+        .total-score { background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%); color: white; padding: 30px; border-radius: 12px; text-align: center; margin-bottom: 20px; }
+        .total-score .score-display { background: rgba(255, 255, 255, 0.2); border: 2px solid white; }
+        .total-score .score-number, .total-score .score-percent { color: white; }
+        .menu-buttons { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-bottom: 60px; }
+        input, textarea { width: 100%; padding: 12px; margin: 10px 0; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 16px; }
+        input:focus, textarea:focus { outline: none; border-color: #2563eb; }
+        .primary-button, .secondary-button, .hint-button { padding: 12px 24px; border: none; border-radius: 8px; cursor: pointer; font-size: 14px; font-weight: bold; transition: all 0.3s ease; }
+        .primary-button { background: #2563eb; color: white; min-width: 120px; }
+        .primary-button:hover { background: #1e3a8a; }
+        .secondary-button { background: #9ca3af; color: white; min-width: 120px; }
+        .secondary-button:hover { background: #6b7280; }
+        .hint-button { background: #f59e0b; color: white; min-width: 120px; }
+        .hint-button:hover { background: #d97706; }
+        .progress-bar { width: 100%; height: 8px; background: #e5e7eb; border-radius: 10px; overflow: hidden; margin-bottom: 10px; }
+        .progress-fill { height: 100%; background: linear-gradient(90deg, #2563eb, #1e3a8a); }
+        .exercise-form { background: #f9fafb; padding: 25px; border-radius: 12px; margin-bottom: 20px; border: 2px solid #e5e7eb; }
+        .spanish-verb, .spanish-sentence { background: white; padding: 15px; border-left: 4px solid #2563eb; margin-bottom: 20px; font-size: 1.1em; color: #1e3a8a; font-weight: bold; }
+        .verb-fields { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; margin-bottom: 20px; }
+        .verb-field label { display: block; color: #1e3a8a; font-weight: bold; margin-bottom: 8px; }
+        .feedback-section { padding: 20px; border-radius: 8px; margin-bottom: 20px; }
+        .feedback-section.correct { background: #dcfce7; border: 2px solid #16a34a; color: #166534; }
+        .feedback-section.incorrect { background: #fee2e2; border: 2px solid #dc2626; color: #991b1b; }
+        .exercise-buttons { display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; }
+        .exercise-buttons button { flex: 1; min-width: 120px; }
+        .hint-display { background: #fef3c7; border: 2px solid #f59e0b; padding: 15px; border-radius: 8px; margin-bottom: 15px; }
+        .hint-display strong { color: #b45309; }
+        .hint-item { margin: 8px 0; color: #92400e; }
+        .theory-table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        .theory-table th { background: #1e3a8a; color: white; padding: 15px; text-align: left; }
+        .theory-table td { padding: 12px 15px; border-bottom: 1px solid #e5e7eb; color: #555; }
+        .theory-table tr:hover { background: #f9fafb; }
+        .theory-table tr:nth-child(even) { background: #f9fafb; }
+        .page-footer { text-align: center; color: #9ca3af; font-size: 0.9em; padding: 20px; margin-top: 40px; }
+        .leaderboard-container { max-height: 85vh; overflow-y: auto; }
+        .theory-container { max-height: 85vh; overflow-y: auto; }
+        .results-container { text-align: center; }
+        .results-header { font-size: 3em; margin-bottom: 20px; }
+        .results-excellent { color: #16a34a; }
+        .results-encouraging { color: #f59e0b; }
+        .results-data { background: #f9fafb; padding: 30px; border-radius: 12px; margin: 30px 0; border: 2px solid #e5e7eb; }
+        .results-data-row { display: flex; justify-content: space-between; padding: 15px 0; border-bottom: 1px solid #e5e7eb; font-size: 1.1em; }
+        .results-data-row:last-child { border-bottom: none; }
+        .results-label { font-weight: bold; color: #1e3a8a; }
+        .results-value { color: #2563eb; }
+        .results-score-box { background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%); color: white; padding: 40px; border-radius: 12px; margin: 30px 0; font-size: 2.5em; font-weight: bold; }
+        .results-message { font-size: 1.3em; line-height: 1.8; margin: 30px 0; color: #555; }
+        .results-buttons { display: flex; gap: 15px; justify-content: center; margin-top: 30px; flex-wrap: wrap; }
+        @media (max-width: 768px) { .exercises-section { grid-template-columns: 1fr; } .verb-fields { grid-template-columns: 1fr; } .exercise-buttons { flex-direction: column; } h1 { font-size: 1.8em; } .results-header { font-size: 2em; } }
+    </style>
+</head>
+<body>
+    <div id="app"></div>
+    <script>
+        const GOOGLE_SHEETS_URL = 'https://script.google.com/macros/s/AKfycbzNpH4Ivx7nNVil9Lakt5mVVZHJHf4MhUtAO4A8mDzXXkNELfRdvgZQ7nwJrajnxtwg/exec';
+
+        const ALL_IRREGULAR_VERBS = [
+            {español: "ser", infinitivo: "be", pasado: "was/were", participio: "been"},
+            {español: "golpear", infinitivo: "beat", pasado: "beat", participio: "beaten"},
+            {español: "volverse", infinitivo: "become", pasado: "became", participio: "become"},
+            {español: "comenzar", infinitivo: "begin", pasado: "began", participio: "begun"},
+            {español: "doblar", infinitivo: "bend", pasado: "bent", participio: "bent"},
+            {español: "apostar", infinitivo: "bet", pasado: "bet", participio: "bet"},
+            {español: "morder", infinitivo: "bite", pasado: "bit", participio: "bitten"},
+            {español: "sangrar", infinitivo: "bleed", pasado: "bled", participio: "bled"},
+            {español: "soplar", infinitivo: "blow", pasado: "blew", participio: "blown"},
+            {español: "romper", infinitivo: "break", pasado: "broke", participio: "broken"},
+            {español: "traer", infinitivo: "bring", pasado: "brought", participio: "brought"},
+            {español: "construir", infinitivo: "build", pasado: "built", participio: "built"},
+            {español: "comprar", infinitivo: "buy", pasado: "bought", participio: "bought"},
+            {español: "atrapar", infinitivo: "catch", pasado: "caught", participio: "caught"},
+            {español: "elegir", infinitivo: "choose", pasado: "chose", participio: "chosen"},
+            {español: "venir", infinitivo: "come", pasado: "came", participio: "come"},
+            {español: "costar", infinitivo: "cost", pasado: "cost", participio: "cost"},
+            {español: "cortar", infinitivo: "cut", pasado: "cut", participio: "cut"},
+            {español: "cavar", infinitivo: "dig", pasado: "dug", participio: "dug"},
+            {español: "hacer", infinitivo: "do", pasado: "did", participio: "done"},
+            {español: "dibujar", infinitivo: "draw", pasado: "drew", participio: "drawn"},
+            {español: "soñar", infinitivo: "dream", pasado: "dreamt", participio: "dreamt"},
+            {español: "beber", infinitivo: "drink", pasado: "drank", participio: "drunk"},
+            {español: "conducir", infinitivo: "drive", pasado: "drove", participio: "driven"},
+            {español: "comer", infinitivo: "eat", pasado: "ate", participio: "eaten"},
+            {español: "caer", infinitivo: "fall", pasado: "fell", participio: "fallen"},
+            {español: "alimentar", infinitivo: "feed", pasado: "fed", participio: "fed"},
+            {español: "sentir", infinitivo: "feel", pasado: "felt", participio: "felt"},
+            {español: "luchar", infinitivo: "fight", pasado: "fought", participio: "fought"},
+            {español: "encontrar", infinitivo: "find", pasado: "found", participio: "found"},
+            {español: "volar", infinitivo: "fly", pasado: "flew", participio: "flown"},
+            {español: "olvidar", infinitivo: "forget", pasado: "forgot", participio: "forgotten"},
+            {español: "perdonar", infinitivo: "forgive", pasado: "forgave", participio: "forgiven"},
+            {español: "congelar", infinitivo: "freeze", pasado: "froze", participio: "frozen"},
+            {español: "obtener", infinitivo: "get", pasado: "got", participio: "got"},
+            {español: "dar", infinitivo: "give", pasado: "gave", participio: "given"},
+            {español: "ir", infinitivo: "go", pasado: "went", participio: "gone"},
+            {español: "crecer", infinitivo: "grow", pasado: "grew", participio: "grown"},
+            {español: "tener", infinitivo: "have", pasado: "had", participio: "had"},
+            {español: "oír", infinitivo: "hear", pasado: "heard", participio: "heard"},
+            {español: "esconder", infinitivo: "hide", pasado: "hid", participio: "hidden"},
+            {español: "golpear", infinitivo: "hit", pasado: "hit", participio: "hit"},
+            {español: "herir", infinitivo: "hurt", pasado: "hurt", participio: "hurt"},
+            {español: "guardar", infinitivo: "keep", pasado: "kept", participio: "kept"},
+            {español: "arrodillarse", infinitivo: "kneel", pasado: "knelt", participio: "knelt"},
+            {español: "saber", infinitivo: "know", pasado: "knew", participio: "known"},
+            {español: "inclinarse", infinitivo: "lean", pasado: "leant", participio: "leant"},
+            {español: "aprender", infinitivo: "learn", pasado: "learnt", participio: "learnt"},
+            {español: "partir", infinitivo: "leave", pasado: "left", participio: "left"},
+            {español: "prestar", infinitivo: "lend", pasado: "lent", participio: "lent"},
+            {español: "permitir", infinitivo: "let", pasado: "let", participio: "let"},
+            {español: "tumbarse", infinitivo: "lie", pasado: "lay", participio: "lain"},
+            {español: "encender", infinitivo: "light", pasado: "lit", participio: "lit"},
+            {español: "perder", infinitivo: "lose", pasado: "lost", participio: "lost"},
+            {español: "hacer", infinitivo: "make", pasado: "made", participio: "made"},
+            {español: "significar", infinitivo: "mean", pasado: "meant", participio: "meant"},
+            {español: "encontrarse", infinitivo: "meet", pasado: "met", participio: "met"},
+            {español: "pagar", infinitivo: "pay", pasado: "paid", participio: "paid"},
+            {español: "suplicar", infinitivo: "plead", pasado: "pled", participio: "pled"},
+            {español: "poner", infinitivo: "put", pasado: "put", participio: "put"},
+            {español: "renunciar", infinitivo: "quit", pasado: "quit", participio: "quit"},
+            {español: "leer", infinitivo: "read", pasado: "read", participio: "read"},
+            {español: "montar", infinitivo: "ride", pasado: "rode", participio: "ridden"},
+            {español: "levantarse", infinitivo: "rise", pasado: "rose", participio: "risen"},
+            {español: "correr", infinitivo: "run", pasado: "ran", participio: "run"},
+            {español: "decir", infinitivo: "say", pasado: "said", participio: "said"},
+            {español: "ver", infinitivo: "see", pasado: "saw", participio: "seen"},
+            {español: "buscar", infinitivo: "seek", pasado: "sought", participio: "sought"},
+            {español: "vender", infinitivo: "sell", pasado: "sold", participio: "sold"},
+            {español: "enviar", infinitivo: "send", pasado: "sent", participio: "sent"},
+            {español: "establecer", infinitivo: "set", pasado: "set", participio: "set"},
+            {español: "sacudir", infinitivo: "shake", pasado: "shook", participio: "shaken"},
+            {español: "brillar", infinitivo: "shine", pasado: "shone", participio: "shone"},
+            {español: "disparar", infinitivo: "shoot", pasado: "shot", participio: "shot"},
+            {español: "cerrar", infinitivo: "shut", pasado: "shut", participio: "shut"},
+            {español: "cantar", infinitivo: "sing", pasado: "sang", participio: "sung"},
+            {español: "dormir", infinitivo: "sleep", pasado: "slept", participio: "slept"},
+            {español: "oler", infinitivo: "smell", pasado: "smelt", participio: "smelt"},
+            {español: "hablar", infinitivo: "speak", pasado: "spoke", participio: "spoken"},
+            {español: "deletrear", infinitivo: "spell", pasado: "spelt", participio: "spelt"},
+            {español: "gastar", infinitivo: "spend", pasado: "spent", participio: "spent"},
+            {español: "girar", infinitivo: "spin", pasado: "spun", participio: "spun"},
+            {español: "escupir", infinitivo: "spit", pasado: "spat", participio: "spat"},
+            {español: "robar", infinitivo: "steal", pasado: "stole", participio: "stolen"},
+            {español: "pegar", infinitivo: "stick", pasado: "stuck", participio: "stuck"},
+            {español: "apestar", infinitivo: "stink", pasado: "stank", participio: "stunk"},
+            {español: "jurar", infinitivo: "swear", pasado: "swore", participio: "sworn"},
+            {español: "sudar", infinitivo: "sweat", pasado: "sweat", participio: "sweat"},
+            {español: "barrer", infinitivo: "sweep", pasado: "swept", participio: "swept"},
+            {español: "nadar", infinitivo: "swim", pasado: "swam", participio: "swum"},
+            {español: "tomar", infinitivo: "take", pasado: "took", participio: "taken"},
+            {español: "enseñar", infinitivo: "teach", pasado: "taught", participio: "taught"},
+            {español: "contar", infinitivo: "tell", pasado: "told", participio: "told"},
+            {español: "pensar", infinitivo: "think", pasado: "thought", participio: "thought"},
+            {español: "lanzar", infinitivo: "throw", pasado: "threw", participio: "thrown"},
+            {español: "pisar", infinitivo: "tread", pasado: "trod", participio: "trodden"},
+            {español: "entender", infinitivo: "understand", pasado: "understood", participio: "understood"},
+            {español: "llevar", infinitivo: "wear", pasado: "wore", participio: "worn"},
+            {español: "mojar", infinitivo: "wet", pasado: "wet", participio: "wet"},
+            {español: "ganar", infinitivo: "win", pasado: "won", participio: "won"},
+            {español: "escribir", infinitivo: "write", pasado: "wrote", participio: "written"}
+        ];
+
+        const FRASES_EJERCICIO_2 = [
+            { respuesta_correcta: "broke", frase_con_hueco: "I _____ (break) my phone yesterday." },
+            { respuesta_correcta: "chosen", frase_con_hueco: "She has _____ (choose) the best restaurant." },
+            { respuesta_correcta: "came", frase_con_hueco: "They _____ (come) to the party." },
+            { respuesta_correcta: "done", frase_con_hueco: "He has _____ (do) his homework." },
+            { respuesta_correcta: "drank", frase_con_hueco: "We _____ (drink) coffee in the morning." },
+            { respuesta_correcta: "eaten", frase_con_hueco: "She has _____ (eat) all the pizza." },
+            { respuesta_correcta: "fell", frase_con_hueco: "I _____ (fall) down the stairs." },
+            { respuesta_correcta: "found", frase_con_hueco: "They _____ (find) the keys." },
+            { respuesta_correcta: "forgiven", frase_con_hueco: "He has _____ (forgive) his mistakes." },
+            { respuesta_correcta: "forgot", frase_con_hueco: "I _____ (forget) my wallet at home." },
+            { respuesta_correcta: "froze", frase_con_hueco: "The river _____ (freeze) completely." },
+            { respuesta_correcta: "gave", frase_con_hueco: "She _____ (give) me a beautiful gift." },
+            { respuesta_correcta: "went", frase_con_hueco: "We _____ (go) to the beach." },
+            { respuesta_correcta: "grown", frase_con_hueco: "The grass has _____ (grow) very tall." },
+            { respuesta_correcta: "held", frase_con_hueco: "They _____ (hold) hands in the park." },
+            { respuesta_correcta: "heard", frase_con_hueco: "I have _____ (hear) the news already." },
+            { respuesta_correcta: "hidden", frase_con_hueco: "They have _____ (hide) the treasure map." },
+            { respuesta_correcta: "knew", frase_con_hueco: "He _____ (know) the answer well." },
+            { respuesta_correcta: "lain", frase_con_hueco: "She has _____ (lie) on the beach." },
+            { respuesta_correcta: "left", frase_con_hueco: "I _____ (leave) the office early." },
+            { respuesta_correcta: "lent", frase_con_hueco: "She _____ (lend) me some money." },
+            { respuesta_correcta: "led", frase_con_hueco: "He has _____ (lead) the project." },
+            { respuesta_correcta: "made", frase_con_hueco: "I _____ (make) a big mistake at work." },
+            { respuesta_correcta: "met", frase_con_hueco: "They _____ (meet) at the station." },
+            { respuesta_correcta: "overcome", frase_con_hueco: "We have _____ (overcome) difficulties." },
+            { respuesta_correcta: "paid", frase_con_hueco: "She _____ (pay) the bill immediately." },
+            { respuesta_correcta: "read", frase_con_hueco: "I _____ (read) the entire book." },
+            { respuesta_correcta: "lost", frase_con_hueco: "The ring has been _____ (lose) forever." },
+            { respuesta_correcta: "rode", frase_con_hueco: "He _____ (ride) the horse skillfully." },
+            { respuesta_correcta: "rang", frase_con_hueco: "The bell _____ (ring) loudly at noon." },
+            { respuesta_correcta: "risen", frase_con_hueco: "The sun has _____ (rise) beautifully." },
+            { respuesta_correcta: "ran", frase_con_hueco: "He _____ (run) a marathon." },
+            { respuesta_correcta: "said", frase_con_hueco: "She _____ (say) goodbye to everyone." },
+            { respuesta_correcta: "saw", frase_con_hueco: "I _____ (see) a beautiful sunset." },
+            { respuesta_correcta: "sold", frase_con_hueco: "She has _____ (sell) her car recently." },
+            { respuesta_correcta: "sent", frase_con_hueco: "I _____ (send) the email yesterday." },
+            { respuesta_correcta: "set", frase_con_hueco: "He _____ (set) the table for dinner." },
+            { respuesta_correcta: "shook", frase_con_hueco: "She _____ (shake) her head nervously." },
+            { respuesta_correcta: "shone", frase_con_hueco: "The stars have _____ (shine) brightly." },
+            { respuesta_correcta: "shot", frase_con_hueco: "He _____ (shoot) the arrow accurately." },
+            { respuesta_correcta: "shut", frase_con_hueco: "The shop has _____ (shut) for the day." },
+            { respuesta_correcta: "sang", frase_con_hueco: "He _____ (sing) beautifully at the concert." },
+            { respuesta_correcta: "sat", frase_con_hueco: "I _____ (sit) on the bench." },
+            { respuesta_correcta: "slept", frase_con_hueco: "He _____ (sleep) peacefully all night." },
+            { respuesta_correcta: "sank", frase_con_hueco: "The ball _____ (sink) quickly into water." },
+            { respuesta_correcta: "spoke", frase_con_hueco: "I _____ (speak) with the manager." },
+            { respuesta_correcta: "spent", frase_con_hueco: "He _____ (spend) all his money on books." },
+            { respuesta_correcta: "split", frase_con_hueco: "The team has _____ (split) into groups." },
+            { respuesta_correcta: "stood", frase_con_hueco: "The building _____ (stand) magnificently." },
+            { respuesta_correcta: "stole", frase_con_hueco: "He _____ (steal) the painting." }
+        ];
+
+        const FRASES_EJERCICIO_3 = [
+            { texto_español: "He estado en París.", respuestas_validas: ["I have been to Paris.", "I've been to Paris.", "I have visited Paris."] },
+            { texto_español: "He asistido a esa conferencia importante.", respuestas_validas: ["I have attended that important conference.", "I've attended that important conference.", "I have gone to that important conference."] },
+            { texto_español: "Ellos se volvieron amigos en la universidad.", respuestas_validas: ["They became friends at the university.", "They became friends at university.", "They turned into friends at the university.", "They grew to be friends at university."] },
+            { texto_español: "La reunión comenzó a tiempo.", respuestas_validas: ["The meeting began on time.", "The meeting started on time.", "The meeting began punctually."] },
+            { texto_español: "Se agachó para recoger la moneda perdida.", respuestas_validas: ["He bent down to pick up the lost coin.", "She bent down to pick up the lost coin.", "He bent to pick up the lost coin.", "She bent to pick up the lost coin."] },
+            { texto_español: "Aposté dinero en el juego.", respuestas_validas: ["I bet money on the game.", "I wagered money on the game.", "I placed a bet on the game."] },
+            { texto_español: "Mordiste la manzana.", respuestas_validas: ["You bit the apple.", "You have bitten the apple."] },
+            { texto_español: "La mano ha sangrado sobre el suelo.", respuestas_validas: ["The hand has bled on the floor.", "The hand has bled onto the floor.", "The hand bled onto the floor."] },
+            { texto_español: "Sopló las velas en su cumpleaños número treinta.", respuestas_validas: ["He blew out the candles on his thirtieth birthday.", "She blew out the candles on her thirtieth birthday."] },
+            { texto_español: "Construyeron la casa con materiales nuevos.", respuestas_validas: ["They built the house with new materials.", "They constructed the house with new materials.", "They have built the house with new materials."] },
+            { texto_español: "El fuego se encendió en el campamento.", respuestas_validas: ["The fire lit at the camp.", "The fire started at the camp.", "The fire burned at the camp."] },
+            { texto_español: "Atrapé al ladrón en la tienda de ropa.", respuestas_validas: ["I caught the thief in the clothes shop.", "I caught the robber in the clothes shop."] },
+            { texto_español: "Ella ha pagado todos los gastos del viaje.", respuestas_validas: ["She has paid all the travel expenses.", "She has paid for all the travel expenses.", "She has paid all the trip expenses."] },
+            { texto_español: "Negociaron un nuevo contrato favorable.", respuestas_validas: ["They negotiated a favorable new contract.", "They made a favorable new contract.", "They worked out a favorable new contract."] },
+            { texto_español: "Excavó el pozo en el jardín.", respuestas_validas: ["He dug the well in the garden.", "She dug the well in the garden.", "He dug the hole in the garden."] },
+            { texto_español: "Disfruté el concierto de jazz.", respuestas_validas: ["I enjoyed the jazz concert.", "I liked the jazz concert."] },
+            { texto_español: "Ella ha burlado el sistema de seguridad.", respuestas_validas: ["She has eluded the security system.", "She has evaded the security system.", "She has bypassed the security system."] },
+            { texto_español: "Alimenté al gato esta mañana.", respuestas_validas: ["I fed the cat this morning.", "I gave food to the cat this morning.", "I have fed the cat this morning."] },
+            { texto_español: "Él se sintió bien después del viaje.", respuestas_validas: ["He felt well after the trip.", "She felt well after the trip.", "He felt good after the trip."] },
+            { texto_español: "Luché contra mis miedos.", respuestas_validas: ["I fought against my fears.", "I struggled with my fears.", "I have fought my fears."] }
+        ];
+
+        class IrregularVerbsApp {
+            constructor() {
+                this.state = {
+                    student: { firstName: '', lastName: '', course: '' },
+                    currentScreen: 'login',
+                    currentExercise: 1,
+                    currentQuestion: 0,
+                    showFeedback: false,
+                    showHint: false,
+                    isAuthenticated: false,
+                    password: 'nuriaLEGEND',
+                    startTime: null,
+                    endTime: null,
+                    leaderboardData: [],
+                    scores: { ejercicio1: 0, ejercicio2: 0, ejercicio3: 0 }
+                };
+                this.init();
+            }
+
+            init() {
+                this.shuffleExercises();
+                this.render();
+            }
+
+            setState(newState) {
+                this.state = { ...this.state, ...newState };
+                this.render();
+            }
+
+            shuffleArray(array) {
+                for (let i = array.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [array[i], array[j]] = [array[j], array[i]];
+                }
+                return array;
+            }
+
+            shuffleExercises() {
+                this.ejercicio1 = this.shuffleArray([...ALL_IRREGULAR_VERBS]).slice(0, 50);
+                this.ejercicio2 = this.shuffleArray([...FRASES_EJERCICIO_2]).slice(0, 50);
+                this.ejercicio3 = this.shuffleArray([...FRASES_EJERCICIO_3]).slice(0, 20);
+            }
+
+            normalize(s) {
+                return s.toLowerCase().trim().replace(/[.,!?;:"']/g, '');
+            }
+
+            render() {
+                const app = document.getElementById('app');
+                if (!this.state.isAuthenticated) {
+                    app.innerHTML = this.renderAuthScreen();
+                    this.attachAuthListeners();
+                    return;
+                }
+                switch (this.state.currentScreen) {
+                    case 'login': app.innerHTML = this.renderLogin(); this.attachLoginListeners(); break;
+                    case 'menu': app.innerHTML = this.renderMenu(); this.attachMenuListeners(); break;
+                    case 'theory': app.innerHTML = this.renderTheory(); this.attachTheoryListeners(); break;
+                    case 'leaderboard': app.innerHTML = this.renderLeaderboard(); this.attachMenuListeners(); break;
+                    case 'exercises': app.innerHTML = this.renderExercises(); this.attachExerciseListeners(); break;
+                    case 'finalResults': app.innerHTML = this.renderFinalResults(); this.attachResultsListeners(); break;
+                }
+            }
+
+            renderAuthScreen() {
+                return `<div class="auth-container"><h2>🔐 Access Code</h2><input type="password" id="accessCode" placeholder="Enter code"><button class="primary-button" id="submitCode">Enter</button></div>`;
+            }
+
+            renderLogin() {
+                return `<div class="login-container"><h1>🇪🇸 Irregular Verbs</h1><input type="text" id="firstName" placeholder="First Name"><input type="text" id="lastName" placeholder="Last Name"><input type="text" id="course" placeholder="Course"><button class="primary-button" id="startButton">Start</button></div>`;
+            }
+
+            renderMenu() {
+                const total = this.state.scores.ejercicio1 + this.state.scores.ejercicio2 + this.state.scores.ejercicio3;
+                const maxTotal = 150;
+                const percentage = Math.round((total / maxTotal) * 100);
+                return `
+                    <div class="menu-container">
+                        <h1>🇪🇸 Irregular Verbs</h1>
+                        <div class="welcome-section">
+                            <p class="welcome-name">Welcome, <strong>${this.state.student.firstName} ${this.state.student.lastName}</strong></p>
+                            <p class="welcome-course">${this.state.student.course}</p>
+                        </div>
+
+                        <div class="exercises-section">
+                            <div class="exercise-card">
+                                <h2>🇪🇸 Ejercicio 1</h2>
+                                <p><strong>Infinitive, Past, Participle</strong></p>
+                                <p class="description">50 exercises. Fill in the three forms of irregular verbs.</p>
+                                <div class="score-display">
+                                    <span class="score-number">${this.state.scores.ejercicio1}/50</span>
+                                    <span class="score-percent">${Math.round((this.state.scores.ejercicio1 / 50) * 100)}%</span>
+                                </div>
+                                <button class="exercise-button" data-exercise="1">Start</button>
+                            </div>
+
+                            <div class="exercise-card">
+                                <h2>📖 Ejercicio 2</h2>
+                                <p><strong>Fill in the gaps</strong></p>
+                                <p class="description">50 exercises. Complete sentences with the correct verb form.</p>
+                                <div class="score-display">
+                                    <span class="score-number">${this.state.scores.ejercicio2}/50</span>
+                                    <span class="score-percent">${Math.round((this.state.scores.ejercicio2 / 50) * 100)}%</span>
+                                </div>
+                                <button class="exercise-button" data-exercise="2">Start</button>
+                            </div>
+
+                            <div class="exercise-card">
+                                <h2>🌍 Ejercicio 3</h2>
+                                <p><strong>Translate to English</strong></p>
+                                <p class="description">20 exercises. Translate Spanish sentences to English.</p>
+                                <div class="score-display">
+                                    <span class="score-number">${this.state.scores.ejercicio3}/20</span>
+                                    <span class="score-percent">${Math.round((this.state.scores.ejercicio3 / 20) * 100)}%</span>
+                                </div>
+                                <button class="exercise-button" data-exercise="3">Start</button>
+                            </div>
+                        </div>
+
+                        <div class="total-score">
+                            <h3>📊 Total Score</h3>
+                            <div class="score-display">
+                                <span class="score-number">${total}/${maxTotal}</span>
+                                <span class="score-percent">${percentage}%</span>
+                            </div>
+                        </div>
+
+                        <div class="menu-buttons">
+                            <button id="theoryButton" class="secondary-button">📖 Theory</button>
+                            <button id="leaderboardButton" class="secondary-button">🏆 Leaderboard</button>
+                        </div>
+                    </div>
+                `;
+            }
+
+            renderTheory() {
+                let table = '<table class="theory-table"><thead><tr><th>Spanish</th><th>Infinitive</th><th>Past</th><th>Participle</th></tr></thead><tbody>';
+                ALL_IRREGULAR_VERBS.forEach(v => { 
+                    table += `<tr><td>${v.español}</td><td>${v.infinitivo}</td><td>${v.pasado}</td><td>${v.participio}</td></tr>`; 
+                });
+                table += '</tbody></table>';
+                return `<div class="theory-container"><h1>📖 100 Irregular Verbs</h1><p style="text-align:center; margin-bottom: 20px;">Complete reference list</p>${table}<br><button class="primary-button" id="backButton">Back</button></div>`;
+            }
+
+            renderLeaderboard() {
+                const lb = this.state.leaderboardData || [];
+                let table = '<table class="theory-table"><thead><tr><th>Rank</th><th>Name</th><th>Score</th><th>Time</th></tr></thead><tbody>';
+                if (lb.length === 0) {
+                    table += '<tr><td colspan="4">No data yet</td></tr>';
+                } else {
+                    lb.forEach((entry, idx) => {
+                        table += `<tr><td>${idx + 1}</td><td>${entry.firstName} ${entry.lastName}</td><td>${entry.score}/100</td><td>${entry.time}s</td></tr>`;
+                    });
+                }
+                table += '</tbody></table>';
+                return `<div class="leaderboard-container"><h1>🏆 Leaderboard</h1>${table}<br><button class="primary-button" id="backButton">Back</button></div>`;
+            }
+
+            renderFinalResults() {
+                const total = this.state.scores.ejercicio1 + this.state.scores.ejercicio2 + this.state.scores.ejercicio3;
+                const percentage = Math.round((total / 120) * 100);
+                const timeTaken = Math.round((this.state.endTime - this.state.startTime) / 1000);
+                const minutes = Math.floor(timeTaken / 60);
+                const seconds = timeTaken % 60;
+                const isExcellent = percentage >= 80;
+
+                const header = isExcellent ? 
+                    `<div class="results-header results-excellent">🎉 CONGRATULATIONS! 🎉</div>` :
+                    `<div class="results-header results-encouraging">⭐ YOU HAVE WORKED VERY HARD! ⭐</div>`;
+
+                const message = isExcellent ?
+                    `<p class="results-message">Excellent work! You have mastered the irregular verbs! Your dedication and hard work have paid off. Keep it up!</p>` :
+                    `<p class="results-message">Great effort! You're doing well. Keep practicing and review the ones you found challenging. You can do it!</p>`;
+
+                return `
+                    <div class="results-container">
+                        ${header}
+                        
+                        <div class="results-data">
+                            <div class="results-data-row">
+                                <span class="results-label">Name:</span>
+                                <span class="results-value">${this.state.student.firstName} ${this.state.student.lastName}</span>
+                            </div>
+                            <div class="results-data-row">
+                                <span class="results-label">Course:</span>
+                                <span class="results-value">${this.state.student.course}</span>
+                            </div>
+                            <div class="results-data-row">
+                                <span class="results-label">Date:</span>
+                                <span class="results-value">${new Date().toLocaleDateString()}</span>
+                            </div>
+                            <div class="results-data-row">
+                                <span class="results-label">Time:</span>
+                                <span class="results-value">${minutes}m ${seconds}s</span>
+                            </div>
+                        </div>
+
+                        <div class="results-score-box">
+                            ${percentage}/100
+                        </div>
+
+                        ${message}
+
+                        <div class="results-buttons">
+                            <button class="primary-button" id="backToMenuButton">Back to Menu</button>
+                            <button class="secondary-button" id="newSessionButton">New Session</button>
+                        </div>
+                    </div>
+                `;
+            }
+
+            renderExercises() {
+                const data = this.state.currentExercise === 1 ? this.ejercicio1 : 
+                             this.state.currentExercise === 2 ? this.ejercicio2 : this.ejercicio3;
+                
+                const q = data[this.state.currentQuestion];
+                let form = '', max = 50;
+                
+                if (this.state.currentExercise === 3) max = 20;
+                
+                if (this.state.currentExercise === 1) {
+                    form = `<div class="exercise-form">
+                        <h3>Fill the three forms:</h3>
+                        <div class="spanish-verb">${q.español}</div>
+                        <div class="verb-fields">
+                            <div class="verb-field"><label>Infinitive:</label><input type="text" id="infinitivo"></div>
+                            <div class="verb-field"><label>Past:</label><input type="text" id="pasado"></div>
+                            <div class="verb-field"><label>Participle:</label><input type="text" id="participio"></div>
+                        </div>
+                    </div>`;
+                } else {
+    const hintBtn = this.state.currentExercise === 3 ? `<button class="hint-button" id="hintButton">💡 Hint</button>` : '';
+    const hintDisplay = this.state.showHint && this.state.currentExercise === 3 ? this.renderHintDisplay(q) : '';
+    form = `<div class="exercise-form">
+        <h3>${this.state.currentExercise === 2 ? 'Complete:' : 'Translate:'}</h3>
+        <div class="spanish-sentence">${this.state.currentExercise === 2 ? q.frase_con_hueco : q.texto_español}</div>
+        ${hintDisplay}
+        <input type="text" id="answer">
+    </div>${hintBtn}`;
+}
+
+                
+                const feedback = this.state.showFeedback ? this.renderFeedback(q) : '';
+                return `<div class="exercise-container">
+                    <h1>Exercise ${this.state.currentExercise}</h1>
+                    <div class="progress-bar"><div class="progress-fill" style="width: ${(this.state.currentQuestion / data.length) * 100}%"></div></div>
+                    <p>${this.state.currentQuestion + 1}/${data.length}</p>
+                    ${form}
+                    ${feedback}
+                    <div class="exercise-buttons">
+                        ${!this.state.showFeedback ? `<button class="primary-button" id="checkButton">Check</button>` : `<button class="primary-button" id="nextButton">Next</button>`}
+                        <button class="secondary-button" id="exitButton">Exit</button>
+                    </div>
+                </div>`;
+            }
+renderHintDisplay(q) {
+    if (!q.hints) return '';
+    let hint = '<div class="hint-display"><strong>💡 Hints:</strong><br>';
+    if (q.hints.nouns && q.hints.nouns.length > 0) {
+        hint += q.hints.nouns.map(n => `<div class="hint-item"><strong>${n[0]}</strong> = ${n[1]}</div>`).join('');
+    }
+    if (q.hints.adjectives && q.hints.adjectives.length > 0) {
+        hint += q.hints.adjectives.map(a => `<div class="hint-item"><strong>${a[0]}</strong> = ${a[1]}</div>`).join('');
+    }
+    if (q.hints.adverbs && q.hints.adverbs.length > 0) {
+        hint += q.hints.adverbs.map(a => `<div class="hint-item"><strong>${a[0]}</strong> = ${a[1]}</div>`).join('');
+    }
+    hint += '</div>';
+    return hint;
+}
+
+            
+renderFeedback(q) {
+                const answers = this.state.currentExercise === 1 ? 
+                    { infinitivo: document.getElementById('infinitivo')?.value || '', pasado: document.getElementById('pasado')?.value || '', participio: document.getElementById('participio')?.value || '' } : 
+                    { answer: document.getElementById('answer')?.value || '' };
+                
+                let isCorrect = false, feedback = '';
+                if (this.state.currentExercise === 1) {
+                    isCorrect = this.normalize(answers.infinitivo) === this.normalize(q.infinitivo) && 
+                               this.normalize(answers.pasado) === this.normalize(q.pasado) && 
+                               this.normalize(answers.participio) === this.normalize(q.participio);
+                    feedback = `<div class="feedback-section ${isCorrect ? 'correct' : 'incorrect'}">
+                        <h3>${isCorrect ? '✓ Correct!' : '✗ Incorrect'}</h3>
+                        <p><strong>Infinitive:</strong> ${q.infinitivo}</p>
+                        <p><strong>Past:</strong> ${q.pasado}</p>
+                        <p><strong>Participle:</strong> ${q.participio}</p>
+                    </div>`;
+                } else {
+                    const valid = this.state.currentExercise === 2 ? [q.respuesta_correcta] : q.respuestas_validas;
+                    isCorrect = valid.some(v => this.normalize(v) === this.normalize(answers.answer));
+                    feedback = `<div class="feedback-section ${isCorrect ? 'correct' : 'incorrect'}">
+                        <h3>${isCorrect ? '✓ Correct!' : '✗ Incorrect'}</h3>
+                        <p><strong>Answers:</strong></p>
+                        <ul>${valid.map(v => `<li>${v}</li>`).join('')}</ul>
+                    </div>`;
+                }
+                if (isCorrect) {
+                    if (this.state.currentExercise === 1) this.state.scores.ejercicio1++;
+                    else if (this.state.currentExercise === 2) this.state.scores.ejercicio2++;
+                    else this.state.scores.ejercicio3++;
+                }
+                return feedback;
+            }
+
+            saveScoreToSheets() {
+                const total = this.state.scores.ejercicio1 + this.state.scores.ejercicio2 + this.state.scores.ejercicio3;
+                const percentage = Math.round((total / 120) * 100);
+                const timeTaken = Math.round((this.state.endTime - this.state.startTime) / 1000);
+                const now = new Date().toLocaleDateString();
+
+                fetch(GOOGLE_SHEETS_URL, {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        action: 'saveScore',
+                        date: now,
+                        firstName: this.state.student.firstName,
+                        lastName: this.state.student.lastName,
+                        course: this.state.student.course,
+                        score: percentage,
+                        time: timeTaken
+                    })
+                })
+                .then(response => response.json())
+                .then(data => console.log('Score saved'))
+                .catch(error => console.error('Error:', error));
+            }
+
+            loadLeaderboard() {
+                fetch(GOOGLE_SHEETS_URL + '?action=getLeaderboard')
+                    .then(r => r.json())
+                    .then(data => {
+                        const sorted = (data || []).sort((a, b) => b.score - a.score).slice(0, 10);
+                        this.setState({ leaderboardData: sorted, currentScreen: 'leaderboard' });
+                    })
+                    .catch(e => this.setState({ currentScreen: 'leaderboard' }));
+            }
+
+            attachAuthListeners() {
+                document.getElementById('submitCode').addEventListener('click', () => {
+                    if (document.getElementById('accessCode').value === this.state.password) {
+                        this.state.isAuthenticated = true;
+                        this.setState({ currentScreen: 'login' });
+                    }
+                });
+            }
+
+            attachLoginListeners() {
+                document.getElementById('startButton').addEventListener('click', () => {
+                    this.setState({ 
+                        student: { 
+                            firstName: document.getElementById('firstName').value, 
+                            lastName: document.getElementById('lastName').value, 
+                            course: document.getElementById('course').value 
+                        }, 
+                        currentScreen: 'menu',
+                        startTime: Date.now()
+                    });
+                });
+            }
+
+            attachMenuListeners() {
+                document.querySelectorAll('.exercise-button').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const exercise = parseInt(e.target.dataset.exercise);
+                        this.setState({
+                            currentScreen: 'exercises',
+                            currentExercise: exercise,
+                            currentQuestion: 0,
+                            showFeedback: false,
+                            showHint: false
+                        });
+                    });
+                });
+
+                document.getElementById('theoryButton')?.addEventListener('click', () => {
+                    this.setState({ currentScreen: 'theory' });
+                });
+
+                document.getElementById('leaderboardButton')?.addEventListener('click', () => {
+                    this.loadLeaderboard();
+                });
+
+                document.getElementById('backButton')?.addEventListener('click', () => {
+                    this.setState({ currentScreen: 'menu' });
+                });
+            }
+
+            attachTheoryListeners() {
+                document.getElementById('backButton')?.addEventListener('click', () => {
+                    this.setState({ currentScreen: 'menu' });
+                });
+            }
+
+            attachResultsListeners() {
+                document.getElementById('backToMenuButton')?.addEventListener('click', () => {
+                    this.setState({ currentScreen: 'menu' });
+                });
+
+                document.getElementById('newSessionButton')?.addEventListener('click', () => {
+                    location.reload();
+                });
+            }
+
+            attachExerciseListeners() {
+                document.getElementById('checkButton')?.addEventListener('click', () => {
+                    this.setState({ showFeedback: true });
+                });
+
+                document.getElementById('nextButton')?.addEventListener('click', () => {
+                    const data = this.state.currentExercise === 1 ? this.ejercicio1 : 
+                                 this.state.currentExercise === 2 ? this.ejercicio2 : this.ejercicio3;
+                    
+                    const nextQuestion = this.state.currentQuestion + 1;
+                    
+                    if (nextQuestion >= data.length) {
+                        if (this.state.currentExercise === 3) {
+                            this.state.endTime = Date.now();
+                            this.saveScoreToSheets();
+                            this.setState({ currentScreen: 'finalResults' });
+                        } else {
+                            this.setState({
+                                currentScreen: 'menu',
+                                currentQuestion: 0,
+                                showFeedback: false,
+                                showHint: false
+                            });
+                        }
+                    } else {
+                        this.setState({
+                            currentQuestion: nextQuestion,
+                            showFeedback: false,
+                            showHint: false
+                        });
+                    }
+                });
+
+                document.getElementById('exitButton')?.addEventListener('click', () => {
+                    this.setState({ 
+                        currentScreen: 'menu', 
+                        currentQuestion: 0, 
+                        showFeedback: false 
+                    });
+                });
+		document.getElementById('hintButton')?.addEventListener('click', () => {
+    			this.setState({ showHint: !this.state.showHint });
+		});
+            }
+        
+
+        new IrregularVerbsApp();
+    </script>
+</body>
+</html>
