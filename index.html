@@ -1,9 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🇪🇸 Irregular Verbs - Learning App</title>
+    <title>🇬🇧 Irregular Verbs - Learning App</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%); color: #1f2937; min-height: 100vh; }
@@ -24,8 +25,8 @@
         .score-percent { font-size: 1.1em; color: #2563eb; font-weight: bold; }
         .exercise-button { width: 100%; padding: 12px; background: #16a34a; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; font-size: 1em; margin-top: 10px; }
         .exercise-button:hover { background: #15803d; }
-        .total-score { background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%); color: white; padding: 30px; border-radius: 12px; text-align: center; margin-bottom: 20px; }
-        .total-score .score-display { background: rgba(255, 255, 255, 0.2); border: 2px solid white; }
+        .total-score { background: linear-gradient(35deg, #eff6ff 0%, #dbeafe 100%); color: white; padding: 30px; border-radius: 12px; text-align: center; margin-bottom: 20px; }
+        .total-score .score-display { background: rgba(5, 111, 247, 0.6); border: 2px solid white; }
         .total-score .score-number, .total-score .score-percent { color: white; }
         .menu-buttons { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-bottom: 60px; }
         input, textarea { width: 100%; padding: 12px; margin: 10px 0; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 16px; }
@@ -237,26 +238,61 @@
         ];
 
         const FRASES_EJERCICIO_3 = [
-            { texto_español: "He estado en París.", respuestas_validas: ["I have been to Paris.", "I've been to Paris.", "I have visited Paris."] },
-            { texto_español: "He asistido a esa conferencia importante.", respuestas_validas: ["I have attended that important conference.", "I've attended that important conference.", "I have gone to that important conference."] },
-            { texto_español: "Ellos se volvieron amigos en la universidad.", respuestas_validas: ["They became friends at the university.", "They became friends at university.", "They turned into friends at the university.", "They grew to be friends at university."] },
-            { texto_español: "La reunión comenzó a tiempo.", respuestas_validas: ["The meeting began on time.", "The meeting started on time.", "The meeting began punctually."] },
-            { texto_español: "Se agachó para recoger la moneda perdida.", respuestas_validas: ["He bent down to pick up the lost coin.", "She bent down to pick up the lost coin.", "He bent to pick up the lost coin.", "She bent to pick up the lost coin."] },
-            { texto_español: "Aposté dinero en el juego.", respuestas_validas: ["I bet money on the game.", "I wagered money on the game.", "I placed a bet on the game."] },
-            { texto_español: "Mordiste la manzana.", respuestas_validas: ["You bit the apple.", "You have bitten the apple."] },
-            { texto_español: "La mano ha sangrado sobre el suelo.", respuestas_validas: ["The hand has bled on the floor.", "The hand has bled onto the floor.", "The hand bled onto the floor."] },
-            { texto_español: "Sopló las velas en su cumpleaños número treinta.", respuestas_validas: ["He blew out the candles on his thirtieth birthday.", "She blew out the candles on her thirtieth birthday."] },
-            { texto_español: "Construyeron la casa con materiales nuevos.", respuestas_validas: ["They built the house with new materials.", "They constructed the house with new materials.", "They have built the house with new materials."] },
-            { texto_español: "El fuego se encendió en el campamento.", respuestas_validas: ["The fire lit at the camp.", "The fire started at the camp.", "The fire burned at the camp."] },
-            { texto_español: "Atrapé al ladrón en la tienda de ropa.", respuestas_validas: ["I caught the thief in the clothes shop.", "I caught the robber in the clothes shop."] },
-            { texto_español: "Ella ha pagado todos los gastos del viaje.", respuestas_validas: ["She has paid all the travel expenses.", "She has paid for all the travel expenses.", "She has paid all the trip expenses."] },
-            { texto_español: "Negociaron un nuevo contrato favorable.", respuestas_validas: ["They negotiated a favorable new contract.", "They made a favorable new contract.", "They worked out a favorable new contract."] },
-            { texto_español: "Excavó el pozo en el jardín.", respuestas_validas: ["He dug the well in the garden.", "She dug the well in the garden.", "He dug the hole in the garden."] },
-            { texto_español: "Disfruté el concierto de jazz.", respuestas_validas: ["I enjoyed the jazz concert.", "I liked the jazz concert."] },
-            { texto_español: "Ella ha burlado el sistema de seguridad.", respuestas_validas: ["She has eluded the security system.", "She has evaded the security system.", "She has bypassed the security system."] },
-            { texto_español: "Alimenté al gato esta mañana.", respuestas_validas: ["I fed the cat this morning.", "I gave food to the cat this morning.", "I have fed the cat this morning."] },
-            { texto_español: "Él se sintió bien después del viaje.", respuestas_validas: ["He felt well after the trip.", "She felt well after the trip.", "He felt good after the trip."] },
-            { texto_español: "Luché contra mis miedos.", respuestas_validas: ["I fought against my fears.", "I struggled with my fears.", "I have fought my fears."] }
+            { texto_español: "He estado en París.", respuestas_validas: ["I have been to Paris.", "I've been to Paris.", "I have visited Paris."], hints: { nouns: [["París", "Paris"]], adjectives: [], adverbs: [] } },
+            { texto_español: "He asistido a esa conferencia importante.", respuestas_validas: ["I have attended that important conference.", "I've attended that important conference.", "I have gone to that important conference."], hints: { nouns: [["conferencia", "conference"]], adjectives: [["importante", "important"]], adverbs: [] } },
+            { texto_español: "Ellos se volvieron amigos en la universidad.", respuestas_validas: ["They became friends at the university.", "They became friends at university.", "They turned into friends at the university.", "They grew to be friends at university."], hints: { nouns: [["amigos", "friends"], ["universidad", "university"]], adjectives: [], adverbs: [] } },
+            { texto_español: "La reunión comenzó a tiempo.", respuestas_validas: ["The meeting began on time.", "The meeting started on time.", "The meeting began punctually."], hints: { nouns: [["reunión", "meeting"], ["tiempo", "time"]], adjectives: [], adverbs: [] } },
+            { texto_español: "Se agachó para recoger la moneda perdida.", respuestas_validas: ["He bent down to pick up the lost coin.", "She bent down to pick up the lost coin.", "He bent to pick up the lost coin.", "She bent to pick up the lost coin."], hints: { nouns: [["moneda", "coin"]], adjectives: [["perdida", "lost"]], adverbs: [] } },
+            { texto_español: "Aposté dinero en el juego.", respuestas_validas: ["I bet money on the game.", "I wagered money on the game.", "I placed a bet on the game."], hints: { nouns: [["dinero", "money"], ["juego", "game"]], adjectives: [], adverbs: [] } },
+            { texto_español: "Mordiste la manzana.", respuestas_validas: ["You bit the apple.", "You have bitten the apple."], hints: { nouns: [["manzana", "apple"]], adjectives: [], adverbs: [] } },
+            { texto_español: "La mano ha sangrado sobre el suelo.", respuestas_validas: ["The hand has bled on the floor.", "The hand has bled onto the floor.", "The hand bled onto the floor.", "Blood bled on the floor."], hints: { nouns: [["mano", "hand"], ["suelo", "floor"]], adjectives: [] } },
+            { texto_español: "Sopló las velas en su cumpleaños número treinta.", respuestas_validas: ["He blew out the candles on his thirtieth birthday.", "She blew out the candles on her thirtieth birthday.", "He blew the candles out on his thirtieth birthday.", "She blew the candles out on her thirtieth birthday."], hints: { nouns: [["velas", "candles"], ["cumpleaños", "birthday"]], adjectives: [["treinta", "thirtieth"]], adverbs: [] } },
+            { texto_español: "Construyeron la casa con materiales nuevos.", respuestas_validas: ["They built the house with new materials.", "They constructed the house with new materials.", "They have built the house with new materials."], hints: { nouns: [["casa", "house"], ["materiales", "materials"]], adjectives: [["nuevos", "new"]], adverbs: [] } },
+            { texto_español: "El fuego se encendió en el campamento.", respuestas_validas: ["The fire lit at the camp.", "The fire started at the camp.", "The fire burned at the camp."], hints: { nouns: [["fuego", "fire"], ["campamento", "camp"]], adjectives: [], adverbs: [] } },
+            { texto_español: "Atrapé al ladrón en la tienda de ropa.", respuestas_validas: ["I caught the thief in the clothes shop.", "I caught the robber in the clothes shop.", "I apprehended the thief in the clothes shop."], hints: { nouns: [["ladrón", "thief"], ["tienda", "shop"], ["ropa", "clothes"]], adjectives: [], adverbs: [] } },
+            { texto_español: "Ella ha pagado todos los gastos del viaje.", respuestas_validas: ["She has paid all the travel expenses.", "She has paid for all the travel expenses.", "She has paid for all the trip expenses.", "She has paid all the trip expenses.", "She has footed all the travel bills."], hints: { nouns: [["gastos", "expenses"], ["viaje", "trip"]], adjectives: [["todos", "all"]], adverbs: [] } },
+            { texto_español: "Negociaron un nuevo contrato favorable.", respuestas_validas: ["They negotiated a favorable new contract.", "They made a favorable new contract.", "They worked out a favorable new contract.", "They dealt with a favorable new contract."], hints: { nouns: [["contrato", "contract"]], adjectives: [["nuevo", "new"], ["favorable", "favorable"]], adverbs: [] } },
+            { texto_español: "Excavó el pozo en el jardín.", respuestas_validas: ["He dug the well in the garden.", "She dug the well in the garden.", "He dug the hole in the garden."], hints: { nouns: [["pozo", "well"], ["jardín", "garden"]], adjectives: [], adverbs: [] } },
+            { texto_español: "Disfruté el concierto de jazz.", respuestas_validas: ["I enjoyed the jazz concert.", "I liked the jazz concert.", "I had fun at the jazz concert."], hints: { nouns: [["concierto", "concert"], ["jazz", "jazz"]], adjectives: [], adverbs: [] } },
+            { texto_español: "Ella ha burlado el sistema de seguridad.", respuestas_validas: ["She has eluded the security system.", "She has evaded the security system.", "She has bypassed the security system."], hints: { nouns: [["sistema", "system"], ["seguridad", "security"]], adjectives: [], adverbs: [] } },
+            { texto_español: "Alimenté al gato esta mañana.", respuestas_validas: ["I fed the cat this morning.", "I gave food to the cat this morning.", "I have fed the cat this morning."], hints: { nouns: [["gato", "cat"], ["mañana", "morning"]], adjectives: [], adverbs: [] } },
+            { texto_español: "Él se sintió bien después del viaje.", respuestas_validas: ["He felt well after the trip.", "She felt well after the trip.", "He felt good after the trip."], hints: { nouns: [["viaje", "trip"]], adjectives: [], adverbs: [] } },
+            { texto_español: "Luché contra mis miedos.", respuestas_validas: ["I fought against my fears.", "I struggled with my fears.", "I have fought my fears."], hints: { nouns: [["miedos", "fears"]], adjectives: [["mis", "my"]], adverbs: [] } },
+            { texto_español: "Él ha volado a Nueva York varias veces.", respuestas_validas: ["He has flown to New York several times.", "He has traveled to New York several times.", "He has gone to New York several times."], hints: { nouns: [["Nueva York", "New York"], ["veces", "times"]], adjectives: [["varias", "several"]], adverbs: [] } },
+            { texto_español: "Olvidé mi cartera en el restaurante.", respuestas_validas: ["I forgot my wallet at the restaurant.", "I forgot my wallet in the restaurant.", "I left my wallet at the restaurant.", "I left my wallet in the restaurant.", "I have forgotten my wallet at the restaurant."], hints: { nouns: [["cartera", "wallet"], ["restaurante", "restaurant"]], adjectives: [], adverbs: [] } },
+            { texto_español: "He perdonado su comportamiento.", respuestas_validas: ["I have forgiven his behavior.", "I have forgiven her behavior.", "I've excused his behavior.", "I've excused her behavior."], hints: { nouns: [["comportamiento", "behavior"]], adjectives: [], adverbs: [] } },
+            { texto_español: "Los lagos se congelaron en invierno.", respuestas_validas: ["The lakes froze in winter.", "The lakes have frozen in winter.", "The lakes froze during winter."], hints: { nouns: [["lagos", "lakes"], ["invierno", "winter"]], adjectives: [], adverbs: [] } },
+            { texto_español: "Ella ha obtenido una beca importante.", respuestas_validas: ["She has obtained an important scholarship.", "She has received an important scholarship.", "She has gotten an important scholarship.", "She has earned an important scholarship."], hints: { nouns: [["beca", "scholarship"]], adjectives: [["importante", "important"]], adverbs: [] } },
+            { texto_español: "Fui al cine con mi familia.", respuestas_validas: ["I went to the cinema with my family.", "I went to the movies with my family.", "I have gone to the cinema with my family."], hints: { nouns: [["cine", "cinema"], ["familia", "family"]], adjectives: [["mi", "my"]], adverbs: [] } },
+            { texto_español: "Las plantas crecieron en el invernadero.", respuestas_validas: ["The plants grew in the greenhouse.", "The plants have grown in the greenhouse.", "The plants developed in the greenhouse."], hints: { nouns: [["plantas", "plants"], ["invernadero", "greenhouse"]], adjectives: [], adverbs: [] } },
+            { texto_español: "Colgué el cuadro en la pared.", respuestas_validas: ["I hung the picture on the wall.", "I hung the painting on the wall.", "I have hung the picture on the wall."], hints: { nouns: [["cuadro", "picture"], ["pared", "wall"]], adjectives: [], adverbs: [] } },
+            { texto_español: "Ellos han lastimado sus sentimientos.", respuestas_validas: ["They have hurt his feelings.", "They have hurt her feelings.", "They've injured his feelings.", "They've injured her feelings."], hints: { nouns: [["sentimientos", "feelings"]], adjectives: [], adverbs: [] } },
+            { texto_español: "Mantuve mi promesa.", respuestas_validas: ["I kept my promise.", "I kept my word.", "I have kept my promise.", "I honored my promise."], hints: { nouns: [["promesa", "promise"]], adjectives: [], adverbs: [] } },
+            { texto_español: "Él supo la respuesta correcta a la pregunta.", respuestas_validas: ["He knew the correct answer to the question.", "She knew the correct answer to the question.", "He knew the right answer to the question."], hints: { nouns: [["respuesta", "answer"], ["pregunta", "question"]], adjectives: [["correcta", "correct"]], adverbs: [] } },
+            { texto_español: "Dirigí el proyecto desde el inicio.", respuestas_validas: ["I led the project from the start.", "I led the project from the beginning.", "I directed the project from the start."], hints: { nouns: [["proyecto", "project"], ["inicio", "start"]], adjectives: [], adverbs: [] } },
+            { texto_español: "Ella ha encendido todas las luces.", respuestas_validas: ["She has lit all the lights.", "She has turned on all the lights.", "She has switched on all the lights."], hints: { nouns: [["luces", "lights"]], adjectives: [["todas", "all"]], adverbs: [] } },
+            { texto_español: "Presté atención en la clase.", respuestas_validas: ["I paid attention in the class.", "I listened in the class.", "I was attentive in the class."], hints: { nouns: [["atención", "attention"], ["clase", "class"]], adjectives: [], adverbs: [] } },
+            { texto_español: "Él percibió el peligro en esa situación.", respuestas_validas: ["He perceived the danger in that situation.", "She perceived the danger in that situation.", "He noticed the danger in that situation.", "She noticed the danger in that situation."], hints: { nouns: [["peligro", "danger"], ["situación", "situation"]], adjectives: [], adverbs: [] } },
+            { texto_español: "Mostré mi talento en la competencia.", respuestas_validas: ["I showed my talent in the competition.", "I displayed my talent in the competition.", "I proved my talent in the competition."], hints: { nouns: [["talento", "talent"], ["competencia", "competition"]], adjectives: [["mi", "my"]], adverbs: [] } },
+            { texto_español: "Ellos han leído todos los libros.", respuestas_validas: ["They have read all the books.", "They have finished all the books."], hints: { nouns: [["libros", "books"]], adjectives: [["todos", "all"]], adverbs: [] } },
+            { texto_español: "Ella viajó al extranjero sola.", respuestas_validas: ["She traveled abroad alone.", "She went abroad alone.", "She journeyed abroad alone.", "She traveled overseas alone."], hints: { nouns: [["extranjero", "abroad"]], adjectives: [], adverbs: [["sola", "alone"]] } },
+            { texto_español: "Usé el teléfono para llamar.", respuestas_validas: ["I used the phone to call.", "I called using the phone.", "I phoned someone."], hints: { nouns: [["teléfono", "phone"]], adjectives: [], adverbs: [] } },
+            { texto_español: "Desgarré el papel sin querer.", respuestas_validas: ["I tore the paper by accident.", "I ripped the paper by mistake.", "I tore the paper accidentally."], hints: { nouns: [["papel", "paper"]], adjectives: [], adverbs: [] } },
+            { texto_español: "Ella ha caminado por todo el parque.", respuestas_validas: ["She has walked through the entire park.", "She has walked all around the park.", "She has walked the entire park."], hints: { nouns: [["parque", "park"]], adjectives: [["todo", "entire"]], adverbs: [] } },
+            { texto_español: "Adquirí las entradas para el concierto.", respuestas_validas: ["I acquired the tickets for the concert.", "I got the tickets for the concert.", "I obtained the tickets for the concert.", "I bought the tickets for the concert."], hints: { nouns: [["entradas", "tickets"], ["concierto", "concert"]], adjectives: [], adverbs: [] } },
+            { texto_español: "Me desperté temprano esta mañana.", respuestas_validas: ["I woke up early this morning.", "I awoke early this morning.", "I have woken up early this morning."], hints: { nouns: [["mañana", "morning"]], adjectives: [["temprano", "early"]], adverbs: [] } },
+            { texto_español: "Gasté todo mi dinero.", respuestas_validas: ["I spent all my money.", "I have spent all my money.", "I wasted all my money."], hints: { nouns: [["dinero", "money"]], adjectives: [["todo", "all"]], adverbs: [] } },
+            { texto_español: "El bebé nació en el hospital.", respuestas_validas: ["The baby was born in the hospital.", "The baby was born at the hospital.", "A baby was born in the hospital."], hints: { nouns: [["bebé", "baby"], ["hospital", "hospital"]], adjectives: [], adverbs: [] } },
+            { texto_español: "Rompí el vaso en la cocina.", respuestas_validas: ["I broke the glass in the kitchen.", "I have broken the glass in the kitchen.", "I broke the cup in the kitchen."], hints: { nouns: [["vaso", "glass"], ["cocina", "kitchen"]], adjectives: [], adverbs: [] } },
+            { texto_español: "Él nos llevó a casa.", respuestas_validas: ["He took us home.", "She took us home.", "He brought us home.", "She brought us home."], hints: { nouns: [["casa", "home"]], adjectives: [], adverbs: [] } },
+            { texto_español: "Encontré mis llaves al fin.", respuestas_validas: ["I found my keys at last.", "I found my keys finally.", "I have found my keys at last."], hints: { nouns: [["llaves", "keys"]], adjectives: [["mis", "my"]], adverbs: [] } },
+            { texto_español: "El río se secó en verano.", respuestas_validas: ["The river dried up in summer.", "The river ran dry in summer."], hints: { nouns: [["río", "river"], ["verano", "summer"]], adjectives: [], adverbs: [] } },
+            { texto_español: "Comí una manzana roja.", respuestas_validas: ["I ate a red apple.", "I have eaten a red apple.", "I ate a red one."], hints: { nouns: [["manzana", "apple"]], adjectives: [["roja", "red"]], adverbs: [] } },
+            { texto_español: "La puerta se cerró sola.", respuestas_validas: ["The door closed by itself.", "The door shut by itself.", "The door closed on its own."], hints: { nouns: [["puerta", "door"]], adjectives: [], adverbs: [] } },
+            { texto_español: "Vimos una película en el cine.", respuestas_validas: ["We saw a movie at the cinema.", "We watched a movie at the cinema.", "We have seen a movie at the cinema."], hints: { nouns: [["película", "movie"], ["cine", "cinema"]], adjectives: [], adverbs: [] } },
+            { texto_español: "Él escribió una carta hermosa.", respuestas_validas: ["He wrote a beautiful letter.", "She wrote a beautiful letter.", "He has written a beautiful letter.", "She has written a beautiful letter."], hints: { nouns: [["carta", "letter"]], adjectives: [["hermosa", "beautiful"]], adverbs: [] } },
+            { texto_español: "Bebimos café en la mañana.", respuestas_validas: ["We drank coffee in the morning.", "We have drunk coffee in the morning.", "We had coffee in the morning."], hints: { nouns: [["café", "coffee"], ["mañana", "morning"]], adjectives: [], adverbs: [] } },
+            { texto_español: "El pájaro voló hacia el cielo.", respuestas_validas: ["The bird flew to the sky.", "The bird has flown to the sky.", "The bird flew toward the sky."], hints: { nouns: [["pájaro", "bird"], ["cielo", "sky"]], adjectives: [], adverbs: [] } }
         ];
 
         class IrregularVerbsApp {
@@ -273,7 +309,9 @@
                     startTime: null,
                     endTime: null,
                     leaderboardData: [],
-                    scores: { ejercicio1: 0, ejercicio2: 0, ejercicio3: 0 }
+                    scores: { ejercicio1: 0, ejercicio2: 0, ejercicio3: 0 },
+                    questionProgress: { 1: 0, 2: 0, 3: 0 }
+
                 };
                 this.init();
             }
@@ -299,7 +337,7 @@
             shuffleExercises() {
                 this.ejercicio1 = this.shuffleArray([...ALL_IRREGULAR_VERBS]).slice(0, 50);
                 this.ejercicio2 = this.shuffleArray([...FRASES_EJERCICIO_2]).slice(0, 50);
-                this.ejercicio3 = this.shuffleArray([...FRASES_EJERCICIO_3]).slice(0, 20);
+                this.ejercicio3 = this.shuffleArray([...FRASES_EJERCICIO_3]).slice(0, 50);
             }
 
             normalize(s) {
@@ -307,13 +345,14 @@
             }
 
             render() {
-                const app = document.getElementById('app');
-                if (!this.state.isAuthenticated) {
-                    app.innerHTML = this.renderAuthScreen();
-                    this.attachAuthListeners();
-                    return;
-                }
-                switch (this.state.currentScreen) {
+   		 const app = document.getElementById('app');
+   		 if (!this.state.isAuthenticated) {
+     		   app.innerHTML = this.renderAuthScreen();
+    		    this.attachAuthListeners();
+    		    return;
+  	  }
+  	  switch (this.state.currentScreen) {
+
                     case 'login': app.innerHTML = this.renderLogin(); this.attachLoginListeners(); break;
                     case 'menu': app.innerHTML = this.renderMenu(); this.attachMenuListeners(); break;
                     case 'theory': app.innerHTML = this.renderTheory(); this.attachTheoryListeners(); break;
@@ -369,10 +408,10 @@
                             <div class="exercise-card">
                                 <h2>🌍 Ejercicio 3</h2>
                                 <p><strong>Translate to English</strong></p>
-                                <p class="description">20 exercises. Translate Spanish sentences to English.</p>
+                                <p class="description">50 sentences. Translate Spanish sentences to English.</p>
                                 <div class="score-display">
-                                    <span class="score-number">${this.state.scores.ejercicio3}/20</span>
-                                    <span class="score-percent">${Math.round((this.state.scores.ejercicio3 / 20) * 100)}%</span>
+                                    <span class="score-number">${this.state.scores.ejercicio3}/50</span>
+                                    <span class="score-percent">${Math.round((this.state.scores.ejercicio3 / 50) * 100)}%</span>
                                 </div>
                                 <button class="exercise-button" data-exercise="3">Start</button>
                             </div>
@@ -477,7 +516,7 @@
                 const q = data[this.state.currentQuestion];
                 let form = '', max = 50;
                 
-                if (this.state.currentExercise === 3) max = 20;
+                if (this.state.currentExercise === 3) max = 50;
                 
                 if (this.state.currentExercise === 1) {
                     form = `<div class="exercise-form">
@@ -627,8 +666,8 @@ renderFeedback(q) {
                         this.setState({
                             currentScreen: 'exercises',
                             currentExercise: exercise,
-                            currentQuestion: 0,
-                            showFeedback: false,
+                            currentQuestion: this.state.questionProgress[exercise],
+			    showFeedback: false,
                             showHint: false
                         });
                     });
@@ -673,8 +712,9 @@ renderFeedback(q) {
                                  this.state.currentExercise === 2 ? this.ejercicio2 : this.ejercicio3;
                     
                     const nextQuestion = this.state.currentQuestion + 1;
-                    
-                    if (nextQuestion >= data.length) {
+                    this.state.questionProgress[this.state.currentExercise] = nextQuestion;
+                   	if (nextQuestion >= data.length) {
+
                         if (this.state.currentExercise === 3) {
                             this.state.endTime = Date.now();
                             this.saveScoreToSheets();
@@ -708,7 +748,7 @@ renderFeedback(q) {
 		});
             }
         
-
+	 }
         new IrregularVerbsApp();
     </script>
 </body>
