@@ -125,7 +125,7 @@
         </div>
         <div>
           <h1 class="font-black text-2xl md:text-3xl text-white tracking-wider">ENGLISH<span class="text-emerald-400">PRO</span></h1>
-          <p class="text-sm font-semibold text-slate-400">Irregular Verbs</p>
+          <p class="text-sm font-semibold text-slate-400">Irregular Verbs · Step by step</p>
         </div>
       </div>
 
@@ -171,7 +171,7 @@
           <label class="block text-sm font-bold text-slate-300 uppercase tracking-wider mb-2">Surname(s)</label>
           <input type="text" id="regLastName" required placeholder="e.g. García López" class="w-full bg-slate-950 border-2 border-slate-800 rounded-2xl px-5 py-4 text-lg md:text-xl text-white focus:outline-none focus:border-emerald-500 transition">
         </div>
-        <div>
+        <div id="accountBox">
           <label class="block text-sm font-bold text-slate-300 uppercase tracking-wider mb-2">Your account</label>
           <div class="w-full bg-slate-950 border-2 border-emerald-500/30 rounded-2xl px-5 py-4 flex items-center justify-between gap-3">
             <span id="regEmailShown" class="text-base md:text-lg text-emerald-300 font-bold break-all"></span>
@@ -190,7 +190,7 @@
             <option value="2BTO">2BTO</option>
           </select>
         </div>
-        <div>
+        <div id="codeBox">
           <label class="block text-sm font-bold text-amber-400 uppercase tracking-wider mb-2">Class code</label>
           <input type="text" id="regClassCode" required placeholder="e.g. ABC123" autocomplete="off" autocapitalize="characters"
             class="w-full bg-slate-950 border-2 border-amber-500/40 rounded-2xl px-5 py-4 text-lg md:text-xl text-white font-black tracking-widest uppercase focus:outline-none focus:border-amber-400 transition">
@@ -198,9 +198,14 @@
             Your own teacher gives you this code. Your work is sent <strong>only</strong> to that teacher.
           </p>
           <p id="regCodeHint" class="hidden text-sm font-bold text-amber-300 mt-2"></p>
-          <p id="regCodeError" class="hidden text-sm font-bold text-rose-400 mt-2"></p>
         </div>
-        <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-black text-xl md:text-2xl py-5 rounded-2xl transition shadow-xl shadow-emerald-600/40 flex items-center justify-center gap-3 mt-4">
+        <div id="guestNotice" class="hidden bg-slate-800/60 border border-slate-700 rounded-2xl p-4 text-left">
+          <p class="text-base font-black text-slate-200"><i class="fa-solid fa-user-clock text-slate-400 mr-1"></i> Guest mode</p>
+          <p class="text-sm text-slate-400 leading-snug mt-1">You can do every exercise and see your marks on screen, but <strong>nothing is saved</strong>: if you close the page, your progress is lost and your teacher does not get it.</p>
+          <button type="button" onclick="cancelGuestForm()" class="text-sm text-emerald-300 hover:text-white underline mt-2">I do have a code \u2192 sign in with Google</button>
+        </div>
+        <p id="regCodeError" class="hidden text-sm font-bold text-rose-400"></p>
+        <button type="submit" id="regSubmitBtn" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-black text-xl md:text-2xl py-5 rounded-2xl transition shadow-xl shadow-emerald-600/40 flex items-center justify-center gap-3 mt-4">
           Enter the Academy <i class="fa-solid fa-arrow-right"></i>
         </button>
         </div>
@@ -208,7 +213,7 @@
         <div id="guestBox" class="hidden pt-2 text-center border-t border-slate-800 mt-2">
           <p class="text-sm text-slate-400 mt-4 mb-3">Don’t have a code? You can still practise: your marks appear on screen and you can print them, but <strong>nothing is sent to any teacher</strong>.</p>
           <p class="text-xs text-slate-500 mb-3 leading-snug"><i class="fa-solid fa-circle-info"></i> <strong>Other teachers:</strong> your students are welcome to use this app in guest mode. They get every exercise and their own report on screen — it just isn’t stored, so nothing reaches another teacher’s marks list.</p>
-          <button type="button" onclick="enterGuestMode()" class="w-full bg-slate-800 hover:bg-slate-700 text-slate-200 font-black text-base md:text-lg py-4 rounded-2xl transition flex items-center justify-center gap-3">
+          <button type="button" onclick="startGuestForm()" class="w-full bg-slate-800 hover:bg-slate-700 text-slate-200 font-black text-base md:text-lg py-4 rounded-2xl transition flex items-center justify-center gap-3">
             <i class="fa-solid fa-user-clock"></i> Practise without a code
           </button>
         </div>
@@ -1900,7 +1905,40 @@
       return { first: parts.shift(), last: parts.join(" ") };
     }
 
+    let guestUI = false;
+
+    function startGuestForm() {
+      if (!window.ALLOW_GUEST_MODE) return;
+      guestUI = true;
+      showCodeError(""); showAuthError("");
+      document.getElementById("authGate").classList.add("hidden");
+      document.getElementById("regFields").classList.remove("hidden");
+      document.getElementById("accountBox").classList.add("hidden");
+      document.getElementById("codeBox").classList.add("hidden");
+      // si sigue siendo obligatoria y esta oculta, el navegador no deja enviar
+      document.getElementById("regClassCode").removeAttribute("required");
+      document.getElementById("guestNotice").classList.remove("hidden");
+      document.getElementById("guestBox").classList.add("hidden");
+      document.getElementById("regSubmitBtn").innerHTML = `Start practising <i class="fa-solid fa-play"></i>`;
+      const fn = document.getElementById("regFirstName");
+      if (fn) fn.focus();
+      window.scrollTo(0, 0);
+    }
+
+    function cancelGuestForm() {
+      guestUI = false;
+      showCodeError("");
+      document.getElementById("guestNotice").classList.add("hidden");
+      document.getElementById("accountBox").classList.remove("hidden");
+      document.getElementById("codeBox").classList.remove("hidden");
+      document.getElementById("regClassCode").setAttribute("required", "required");
+      document.getElementById("regSubmitBtn").innerHTML = `Enter the Academy <i class="fa-solid fa-arrow-right"></i>`;
+      if (window.ALLOW_GUEST_MODE) document.getElementById("guestBox").classList.remove("hidden");
+      paintAuthState();
+    }
+
     function paintAuthState() {
+      if (guestUI) return;
       const gate = document.getElementById("authGate");
       const fields = document.getElementById("regFields");
       if (!gate || !fields) return;
@@ -1985,6 +2023,7 @@
 
     function handleRegistration(e) {
       e.preventDefault();
+      if (guestUI) { enterGuestMode(); return; }
       if (!currentAuthUser) { showAuthError("\u26a0\ufe0f Sign in with Google first."); return; }
       if (!isSchoolAccount(currentAuthUser.email)) {
         showCodeError("\u26a0\ufe0f This app only saves the work of @" + window.SCHOOL_DOMAIN +
@@ -2025,11 +2064,14 @@
       if (!window.ALLOW_GUEST_MODE) return;
       const user = readRegistrationForm();
       user.uid = null;
+      user.email = "";
       if (!user.firstName || !user.lastName || !user.grade) {
-        showCodeError("⚠️ Please write your name, your surname(s) and choose your group first.");
+        showCodeError("\u26a0\ufe0f Write your name, your surname(s) and choose your group to start.");
+        const fn = document.getElementById("regFirstName");
+        if (fn && !user.firstName) fn.focus();
         return;
       }
-      if (!confirm("Guest mode: you can do all the exercises and see your marks, but NOTHING is sent to a teacher.\n\nContinue?")) return;
+      guestUI = false;
       user.guest = true;
       user.classCode = "";
       startSession(user);
@@ -2043,7 +2085,7 @@
       document.getElementById("userInfoHeader").classList.add("hidden");
       document.getElementById("regForm").reset();
       showCodeError("");
-      if (eraGuest) { paintAuthState(); showView("viewRegistration"); }
+      if (eraGuest) { cancelGuestForm(); showView("viewRegistration"); }
       else { auth.signOut().catch(err => console.error(err)); }
     }
 
