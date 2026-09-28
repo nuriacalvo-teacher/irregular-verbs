@@ -13,6 +13,7 @@ const CASES = typeof CASES_SRC === "function" ? CASES_SRC(T) : CASES_SRC;
 
 /* ---------- generadores de variantes ---------- */
 const CONTRACT = [
+  [/\bwill not\b/i, "won't"],
   [/\bI am\b/i, "I'm"], [/\byou are\b/i, "you're"], [/\bwe are\b/i, "we're"], [/\bthey are\b/i, "they're"],
   [/\bit is\b/i, "it's"], [/\bit has\b/i, "it's"], [/\bI have\b/i, "I've"], [/\bwe have\b/i, "we've"], [/\bthey have\b/i, "they've"],
   [/\bis not\b/i, "isn't"], [/\bare not\b/i, "aren't"], [/\bhas not\b/i, "hasn't"], [/\bhave not\b/i, "haven't"],
@@ -24,6 +25,7 @@ const CONTRACT = [
 function sub(m, rx, to) { return keepCase(m, m.replace(new RegExp(rx.source, "i"), to)); }
 function contractAll(s) { let o = s; for (let k = 0; k < 3; k++) CONTRACT.forEach(([rx, to]) => { o = o.replace(rx, m => sub(m, rx, to)); }); return o; }
 function contractFirst(s) {
+  if (/\bwill not\b/i.test(s)) return s.replace(/\bwill not\b/i, "won't");   // 'll not no es natural
   let best = null;
   CONTRACT.forEach(([rx, to]) => { const m = rx.exec(s); if (m && (!best || m.index < best.i)) best = { i: m.index, len: m[0].length, to: sub(m[0], rx, to) }; });
   return best ? s.slice(0, best.i) + best.to + s.slice(best.i + best.len) : s;

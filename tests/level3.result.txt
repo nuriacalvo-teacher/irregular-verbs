@@ -213,7 +213,7 @@ iv_m5_l3_40   | 2         | 11/11        | 9/9
 iv_m5_l3_41   | 1         | 15/15        | 10/10
 --------------------------------------------------------
 TOTAL 210     | 583       | 2752/2752    | 1788/1788
-Expansión de todo el nivel 3: 38.5 ms
+Expansión de todo el nivel 3: 61.2 ms
 
 TODO OK ✔
 Level 1: 130 casos · TODO OK ✔
