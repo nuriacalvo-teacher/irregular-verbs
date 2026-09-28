@@ -808,6 +808,14 @@
        Las frases "ingles" y "otras" ya se amplian solas (L3_CONFIG.auto): expresiones de tiempo movibles,
        sinonimos seguros (phone/mobile, film/movie...) y "a week ago" = "one week ago".
        ============================================================ */
+    /* Pista del paréntesis en el Level 3 cuando el verbo necesita partícula o preposición
+       (se muestra en lugar del infinitivo solo). Clave = qid de la pregunta. */
+    const L3_VERB_HINT = {
+      iv_m1_l3_17: "blow out", iv_m2_l3_2: "dream about", iv_m2_l3_3: "dream of", iv_m2_l3_10: "fall off",
+      iv_m3_l3_26: "lie to", iv_m3_l3_27: "lie to", iv_m3_l3_40: "pay for",
+      iv_m5_l3_0: "smell of", iv_m5_l3_2: "speak to", iv_m5_l3_29: "think about"
+    };
+
     const TR3 = {
       iv_m1: [
         ["be", "ps", "Estuve en Roma hace dos años.", "I was in Rome two years ago."],
@@ -1525,7 +1533,7 @@
               qid: `${def.id}_l3_${i}`, type: "translate", prompt: es,
               answers: [en].concat((alts || []).slice(0, 2)),   // lo que ve el alumno
               alts: alts || [], pat: pat || null,                 // solo para corregir (L3-ENGINE)
-              verbKey: vk, tense: tense
+              verbKey: vk, tense: tense, verbHint: L3_VERB_HINT[`${def.id}_l3_${i}`] || null
             };
           });
         }
@@ -2173,7 +2181,7 @@
         const width = Math.max(8, Math.max.apply(null, q.answers.map(a => a.length)) + 3);
         return `<p class="text-2xl md:text-4xl font-extrabold text-white leading-relaxed">${escapeHtml(parts[0])}<input type="text" id="ans_0" class="quiz-input gap-input text-xl md:text-3xl" style="width:${width}ch" ${inp}>${escapeHtml(parts[1] || "")} <span class="text-amber-400 font-mono text-xl md:text-2xl">(${escapeHtml(q.hint)})</span></p>`;
       }
-      const base = q.verbKey ? VERBS[q.verbKey][0] : "";
+      const base = q.verbHint || (q.verbKey ? VERBS[q.verbKey][0] : "");
       return `
         <p class="text-xs md:text-sm font-black uppercase tracking-widest text-slate-400 mb-2">Translate into English</p>
         <p class="text-2xl md:text-4xl font-extrabold text-white mb-3" lang="es">${escapeHtml(q.prompt)}
