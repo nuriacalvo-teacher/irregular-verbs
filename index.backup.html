@@ -804,19 +804,17 @@
     /* ============================================================
        LEVEL 3 · frases CORTAS para traducir (42 por modulo:
        cada verbo del modulo una vez en pasado y otra en participio).
-       [verbo, tiempo, espanol, ingles, (otras traducciones validas: se muestran 2 como mucho), (plantillas "pat" del L3-ENGINE)]
-       Las frases "ingles" y "otras" ya se amplian solas (L3_CONFIG.auto): expresiones de tiempo movibles,
-       sinonimos seguros (phone/mobile, film/movie...) y "a week ago" = "one week ago".
+       [verbo, tiempo, espanol, ingles, (otras traducciones validas)]
        ============================================================ */
     const TR3 = {
       iv_m1: [
         ["be", "ps", "Estuve en Roma hace dos años.", "I was in Rome two years ago."],
-        ["be", "pp", "He estado aquí desde las ocho.", "I have been here since eight o'clock.", ["I have been here since eight."], ["I have been here {T:since eight}"]],
+        ["be", "pp", "He estado aquí desde las ocho.", "I have been here since eight o'clock.", ["I have been here since eight."]],
         ["beat", "ps", "Ganamos a tu equipo hace dos semanas.", "We beat your team two weeks ago."],
         ["beat", "pp", "Ella me ha ganado otra vez.", "She has beaten me again."],
         ["become", "ps", "Él se hizo famoso.", "He became famous."],
         ["become", "pp", "Mi hermana se ha hecho médica.", "My sister has become a doctor."],
-        ["begin", "ps", "La clase empezó hace diez minutos.", "The class began ten minutes ago.", ["The lesson began ten minutes ago."], ["The (class|lesson) began {T:ten minutes ago}"]],
+        ["begin", "ps", "La clase empezó hace diez minutos.", "The class began ten minutes ago."],
         ["begin", "pp", "La película ha empezado.", "The film has begun."],
         ["bend", "ps", "Doblé el papel.", "I bent the paper."],
         ["bend", "pp", "Él ha doblado la cuchara.", "He has bent the spoon."],
@@ -826,12 +824,12 @@
         ["bite", "pp", "Un mosquito me ha picado.", "A mosquito has bitten me."],
         ["bleed", "ps", "Mi nariz sangró mucho.", "My nose bled a lot."],
         ["bleed", "pp", "Mi dedo ha sangrado.", "My finger has bled."],
-        ["blow", "ps", "El viento sopló muy fuerte.", "The wind blew very hard.", ["The wind blew really hard."], ["The wind blew @very (hard|strongly)"]],
-        ["blow", "pp", "Ella ha soplado las velas.", "She has blown out the candles.", ["She has blown the candles out."], ["She has blown (out the candles|the candles out)"]],
+        ["blow", "ps", "El viento sopló muy fuerte.", "The wind blew very hard."],
+        ["blow", "pp", "Ella ha soplado las velas.", "She has blown out the candles.", ["She has blown the candles."]],
         ["break", "ps", "Rompí un vaso hace dos días.", "I broke a glass two days ago."],
         ["break", "pp", "Él ha roto la ventana.", "He has broken the window."],
         ["bring", "ps", "Traje mi libro.", "I brought my book."],
-        ["bring", "pp", "Ella nos ha traído un regalo.", "She has brought us a present.", ["She has brought a present for us."], ["She has brought (us a @present|a @present for us)"]],
+        ["bring", "pp", "Ella nos ha traído un regalo.", "She has brought us a present."],
         ["build", "ps", "Construyeron esta casa hace cien años.", "They built this house a hundred years ago.", ["They built this house one hundred years ago.", "They built this house 100 years ago."]],
         ["build", "pp", "Han construido un puente.", "They have built a bridge."],
         ["burn", "ps", "Quemé la comida.", "I burnt the food."],
@@ -843,23 +841,23 @@
         ["choose", "ps", "Elegí el vestido azul.", "I chose the blue dress."],
         ["choose", "pp", "Él ha elegido una película.", "He has chosen a film."],
         ["come", "ps", "Mis primos vinieron ayer.", "My cousins came yesterday."],
-        ["come", "pp", "El verano ha llegado.", "Summer has come.", ["The summer has come."], ["[the] summer has come"]],
+        ["come", "pp", "El verano ha llegado.", "Summer has come.", ["Summer has arrived."]],
         ["cost", "ps", "El libro costó diez euros.", "The book cost ten euros."],
-        ["cost", "pp", "Ha costado mucho dinero.", "It has cost a lot of money.", ["It has cost lots of money."], ["It has cost (a lot of|lots of) money"]],
+        ["cost", "pp", "Ha costado mucho dinero.", "It has cost a lot of money."],
         ["cut", "ps", "Corté la tarta.", "I cut the cake."],
         ["cut", "pp", "Me he cortado el dedo.", "I have cut my finger."],
         ["dig", "ps", "El perro cavó un agujero.", "The dog dug a hole."],
         ["dig", "pp", "Han cavado en el jardín.", "They have dug in the garden."],
-        ["do", "ps", "Hice los deberes.", "I did my homework.", ["I did the homework."], ["I did (my|the) homework"]],
+        ["do", "ps", "Hice los deberes.", "I did my homework."],
         ["do", "pp", "Ella ha hecho un buen trabajo.", "She has done a good job."]
       ],
       iv_m2: [
         ["draw", "ps", "Dibujé un gato.", "I drew a cat."],
         ["draw", "pp", "Ella ha dibujado un mapa.", "She has drawn a map."],
-        ["dream", "ps", "Anoche soñé con mi perro.", "Last night I dreamt about my dog.", ["I dreamt of my dog last night."], ["I (dreamt|dreamed) (about|of) my dog {T:last night}"]],
-        ["dream", "pp", "Siempre he soñado con volar.", "I have always dreamt of flying.", ["I have always dreamt about flying."], ["I have always dreamt (of|about) flying"]],
+        ["dream", "ps", "Anoche soñé con mi perro.", "Last night I dreamt about my dog."],
+        ["dream", "pp", "Siempre he soñado con volar.", "I have always dreamt of flying."],
         ["drink", "ps", "Bebí mucha agua.", "I drank a lot of water."],
-        ["drink", "pp", "El bebé se ha bebido la leche.", "The baby has drunk the milk.", ["The baby has drunk her milk."], ["The baby has drunk (the|her|his|its|all the|all its|all her|all his) milk"]],
+        ["drink", "pp", "El bebé se ha bebido la leche.", "The baby has drunk the milk."],
         ["drive", "ps", "Mi madre condujo el coche.", "My mother drove the car."],
         ["drive", "pp", "Él ha conducido durante seis horas.", "He has driven for six hours."],
         ["eat", "ps", "Comimos pizza anoche.", "We ate pizza last night."],
@@ -867,31 +865,31 @@
         ["fall", "ps", "Me caí de la bici.", "I fell off my bike."],
         ["fall", "pp", "Las hojas se han caído.", "The leaves have fallen."],
         ["feed", "ps", "Di de comer al gato.", "I fed the cat."],
-        ["feed", "pp", "Ya he dado de comer al perro.", "I have already fed the dog.", ["I have fed the dog already."], ["I have (already fed the dog|fed the dog already)"]],
+        ["feed", "pp", "Ya he dado de comer al perro.", "I have already fed the dog."],
         ["feel", "ps", "Ayer me sentí muy cansado.", "I felt very tired yesterday."],
-        ["feel", "pp", "Me he sentido mal desde el desayuno.", "I have felt ill since breakfast.", ["I have felt bad since breakfast.", "I have felt sick since breakfast."], ["I have felt (ill|bad|sick|unwell) {T:since breakfast}"]],
-        ["fight", "ps", "Los dos hermanos se pelearon.", "The two brothers fought.", ["The two brothers fought each other."], ["The two brothers fought [each other|with each other]"]],
-        ["fight", "pp", "Los gatos se han peleado.", "The cats have fought.", ["The cats have fought each other."], ["The cats have fought [each other|with each other]"]],
+        ["feel", "pp", "Me he sentido mal desde el desayuno.", "I have felt ill since breakfast.", ["I have felt bad since breakfast.", "I have felt sick since breakfast."]],
+        ["fight", "ps", "Los dos hermanos se pelearon.", "The two brothers fought."],
+        ["fight", "pp", "Los gatos se han peleado.", "The cats have fought."],
         ["find", "ps", "Encontré mis llaves.", "I found my keys."],
         ["find", "pp", "Ella ha encontrado su móvil.", "She has found her phone."],
         ["fly", "ps", "Volamos a Londres hace un año.", "We flew to London a year ago."],
-        ["fly", "pp", "Nunca he volado en avión.", "I have never flown in a plane.", ["I have never flown on a plane."], ["I have never flown [in a plane|on a plane|by plane]"]],
+        ["fly", "pp", "Nunca he volado en avión.", "I have never flown in a plane."],
         ["forget", "ps", "Olvidé tu nombre.", "I forgot your name."],
         ["forget", "pp", "He olvidado mis deberes.", "I have forgotten my homework."],
         ["forgive", "ps", "Ella perdonó a su hermano.", "She forgave her brother."],
         ["forgive", "pp", "Te he perdonado.", "I have forgiven you."],
         ["freeze", "ps", "El lago se congeló hace dos semanas.", "The lake froze two weeks ago."],
-        ["freeze", "pp", "Mamá ha congelado la sopa.", "Mum has frozen the soup.", ["My mother has frozen the soup."], ["[my] @mother has frozen the soup"]],
-        ["get", "ps", "Recibí un regalo hace tres días.", "I got a present three days ago.", ["I got a gift three days ago."]],
-        ["get", "pp", "Él ha conseguido un trabajo.", "He has got a job.", ["He has gotten a job."], ["He has (got|gotten) a job"]],
-        ["give", "ps", "Mi abuela me dio un libro.", "My grandma gave me a book.", ["My grandma gave a book to me."], ["My @grandma gave (me a book|a book to me)"]],
-        ["give", "pp", "La profesora nos ha dado deberes.", "The teacher has given us homework.", ["The teacher has given us some homework."], ["The teacher has given (us [some] homework|[some] homework to us)"]],
+        ["freeze", "pp", "Mamá ha congelado la sopa.", "Mum has frozen the soup."],
+        ["get", "ps", "Recibí un regalo hace tres días.", "I got a present three days ago.", ["I was given a present three days ago.", "I was given a present.", "I received a present.", "I received a present three days ago."]],
+        ["get", "pp", "Él ha conseguido un trabajo.", "He has got a job.", ["He has found a job."]],
+        ["give", "ps", "Mi abuela me dio un libro.", "My grandma gave me a book."],
+        ["give", "pp", "La profesora nos ha dado deberes.", "The teacher has given us homework."],
         ["go", "ps", "Fuimos al cine.", "We went to the cinema."],
         ["go", "pp", "Ella se ha ido a casa.", "She has gone home."],
-        ["grow", "ps", "Mi abuelo cultivó tomates.", "My grandfather grew tomatoes.", ["My grandpa grew tomatoes."]],
-        ["grow", "pp", "Has crecido mucho desde el verano.", "You have grown a lot since the summer.", ["You have grown a lot since summer."], ["You have grown a lot {T:since [the] summer}"]],
-        ["hang", "ps", "Colgué mi abrigo.", "I hung my coat.", ["I hung up my coat."], ["I hung ([up] my coat|my coat up)"]],
-        ["hang", "pp", "Hemos colgado las fotos.", "We have hung the photos.", ["We have hung up the pictures."], ["We have hung ([up] the @photos|the @photos up)"]],
+        ["grow", "ps", "Mi abuelo cultivó tomates.", "My grandfather grew tomatoes.", ["My grandfather grew tomatoes.", "My grandad planted tomatoes."]],
+        ["grow", "pp", "Has crecido mucho desde el verano.", "You have grown a lot since the summer."],
+        ["hang", "ps", "Colgué mi abrigo.", "I hung my coat."],
+        ["hang", "pp", "Hemos colgado las fotos.", "We have hung the photos."],
         ["have", "ps", "Tuvimos un examen hace dos días.", "We had an exam two days ago."],
         ["have", "pp", "He tenido esta bici desde hace tres años.", "I have had this bike for three years."],
         ["hear", "ps", "Oí un ruido raro.", "I heard a strange noise."],
@@ -899,131 +897,131 @@
       ],
       iv_m3: [
         ["hide", "ps", "Escondí el regalo.", "I hid the present."],
-        ["hide", "pp", "El gato se ha escondido.", "The cat has hidden.", ["The cat has hidden itself."], ["The cat has hidden [itself]"]],
+        ["hide", "pp", "El gato se ha escondido.", "The cat has hidden."],
         ["hit", "ps", "Él golpeó la pelota.", "He hit the ball."],
         ["hit", "pp", "Un coche ha chocado con el árbol.", "A car has hit the tree."],
         ["hold", "ps", "Ella sostuvo mi mano.", "She held my hand."],
         ["hold", "pp", "Él ha sostenido la caja durante diez minutos.", "He has held the box for ten minutes."],
-        ["hurt", "ps", "Me hice daño en la rodilla hace una semana.", "I hurt my knee a week ago.", ["I hurt my knee one week ago."]],
+        ["hurt", "ps", "Me hice daño en la rodilla hace una semana.", "I hurt my knee a week ago."],
         ["hurt", "pp", "Te has hecho daño en el brazo.", "You have hurt your arm."],
         ["keep", "ps", "Guardé el dinero.", "I kept the money."],
         ["keep", "pp", "He guardado tus cartas durante años.", "I have kept your letters for years."],
         ["know", "ps", "Yo sabía la respuesta.", "I knew the answer."],
         ["know", "pp", "La conozco desde 2020.", "I have known her since 2020."],
-        ["lay", "ps", "Puse la mesa.", "I laid the table.", []],
-        ["lay", "pp", "La gallina ha puesto un huevo.", "The hen has laid an egg.", ["The chicken has laid an egg."], ["The (hen|chicken) has laid an egg"]],
-        ["lead", "ps", "El guía nos llevó al museo.", "The guide led us to the museum.", []],
+        ["lay", "ps", "Puse la mesa.", "I laid the table.", ["I set the table."]],
+        ["lay", "pp", "La gallina ha puesto un huevo.", "The hen has laid an egg."],
+        ["lead", "ps", "El guía nos llevó al museo.", "The guide led us to the museum.", ["The guide took us to the museum."]],
         ["lead", "pp", "Ella ha dirigido el equipo.", "She has led the team."],
         ["learn", "ps", "Aprendí a nadar hace cinco años.", "I learnt to swim five years ago."],
         ["learn", "pp", "Hemos aprendido inglés durante tres años.", "We have learnt English for three years."],
         ["leave", "ps", "El tren salió hace diez minutos.", "The train left ten minutes ago."],
         ["leave", "pp", "Me he dejado el móvil en casa.", "I have left my phone at home."],
-        ["lend", "ps", "Le presté mi bici.", "I lent him my bike.", ["I lent my bike to him.", "I lent her my bike."], ["I lent ((him|her) my @bike|my @bike to (him|her))"]],
-        ["lend", "pp", "Ella me ha prestado un libro.", "She has lent me a book.", ["She has lent a book to me."], ["She has lent (me a book|a book to me)"]],
-        ["let", "ps", "Mis padres me dejaron salir.", "My parents let me go out.", ["My parents let me out."], ["My parents let me (go out|out)"]],
-        ["let", "pp", "La profesora nos ha dejado salir pronto.", "The teacher has let us leave early.", ["The teacher has let us go early."], ["The teacher has let us (leave|go|go out|go home) early"]],
-        ["lie_rest", "ps", "Me tumbé en el sofá.", "I lay on the sofa.", ["I lay down on the sofa."], ["I lay [down] on the @sofa"]],
-        ["lie_rest", "pp", "El perro ha estado tumbado aquí desde las dos.", "The dog has lain here since two o'clock.", ["The dog has lain here since two."], ["The dog has lain here {T:since two}"]],
-        ["lie_untrue", "ps", "Él mintió a su madre.", "He lied to his mother.", ["He lied to his mum."]],
+        ["lend", "ps", "Le presté mi bici.", "I lent him my bike."],
+        ["lend", "pp", "Ella me ha prestado un libro.", "She has lent me a book."],
+        ["let", "ps", "Mis padres me dejaron salir.", "My parents let me go out.", ["My parents allowed me to go out.", "My parents let me out."]],
+        ["let", "pp", "La profesora nos ha dejado salir pronto.", "The teacher has let us leave early.", ["The teacher has allowed us to leave early."]],
+        ["lie_rest", "ps", "Me tumbé en el sofá.", "I lay on the sofa."],
+        ["lie_rest", "pp", "El perro ha estado tumbado aquí desde las dos.", "The dog has lain here since two o'clock.", ["The dog has been lying here.", "The dog has lain here since two."]],
+        ["lie_untrue", "ps", "Él mintió a su madre.", "He lied to his mother."],
         ["lie_untrue", "pp", "Me has mentido.", "You have lied to me."],
-        ["light", "ps", "Papá encendió el fuego.", "Dad lit the fire.", ["Dad lighted the fire."], ["[my] @father (lit|lighted) the fire"]],
-        ["light", "pp", "Ella ha encendido las velas.", "She has lit the candles.", ["She has lighted the candles."], ["She has (lit|lighted) the candles"]],
+        ["light", "ps", "Papá encendió el fuego.", "Dad lit the fire."],
+        ["light", "pp", "Ella ha encendido las velas.", "She has lit the candles."],
         ["lose", "ps", "Perdimos el partido hace dos semanas.", "We lost the match two weeks ago."],
         ["lose", "pp", "He perdido mis llaves.", "I have lost my keys."],
         ["make", "ps", "Hice una tarta.", "I made a cake."],
-        ["make", "pp", "Él ha hecho muchos amigos desde septiembre.", "He has made a lot of friends since September.", ["He has made many friends since September."], ["He has made (a lot of|lots of|many) friends {T:since september}"]],
-        ["mean", "ps", "Eso significó mucho para mí.", "That meant a lot to me.", []],
-        ["mean", "pp", "Esta canción ha significado mucho.", "This song has meant a lot.", ["This song has meant a lot to me."], ["This song has meant a lot [to me]"]],
+        ["make", "pp", "Él ha hecho muchos amigos desde septiembre.", "He has made a lot of friends since September."],
+        ["mean", "ps", "Eso significó mucho para mí.", "That meant a lot to me.", ["That was very important to me."]],
+        ["mean", "pp", "Esta canción ha significado mucho.", "This song has meant a lot."],
         ["meet", "ps", "Conocí a tu hermana hace un año.", "I met your sister a year ago."],
         ["meet", "pp", "Nunca he conocido a un actor.", "I have never met an actor."],
         ["overcome", "ps", "Ella superó su miedo.", "She overcame her fear."],
-        ["overcome", "pp", "Él ha superado muchos problemas.", "He has overcome many problems.", ["He has overcome a lot of problems."], ["He has overcome (many|a lot of|lots of) problems"]],
-        ["pay", "ps", "Pagué las entradas.", "I paid for the tickets.", []],
-        ["pay", "pp", "Ya he pagado.", "I have already paid.", ["I have paid already."], ["I have (already paid|paid already)"]]
+        ["overcome", "pp", "Él ha superado muchos problemas.", "He has overcome many problems."],
+        ["pay", "ps", "Pagué las entradas.", "I paid for the tickets.", ["I paid the tickets."]],
+        ["pay", "pp", "Ya he pagado.", "I have already paid."]
       ],
       iv_m4: [
         ["put", "ps", "Puse el libro en la mesa.", "I put the book on the table."],
         ["put", "pp", "Ella ha puesto la leche en la nevera.", "She has put the milk in the fridge."],
-        ["quit", "ps", "Mi tío dejó de fumar hace dos años.", "My uncle quit smoking two years ago.", ["My uncle quitted smoking two years ago."], ["My uncle (quit|quitted) smoking {T:two years ago}"]],
-        ["quit", "pp", "Ella ha dejado su trabajo.", "She has quit her job.", ["She has quitted her job."], ["She has (quit|quitted) her job"]],
+        ["quit", "ps", "Mi tío dejó de fumar hace dos años.", "My uncle quit smoking two years ago.", ["My uncle stopped smoking.", "My uncle gave up smoking.", "My uncle stopped smoking two years ago.", "My uncle gave up smoking two years ago."]],
+        ["quit", "pp", "Ella ha dejado su trabajo.", "She has quit her job.", ["She has left her job.", "She has given up her job."]],
         ["read", "ps", "Leí este libro hace un mes.", "I read this book a month ago."],
         ["read", "pp", "He leído tu mensaje.", "I have read your message."],
-        ["ride", "ps", "Monté a caballo.", "I rode a horse.", ["I rode on a horse."], ["I rode [on] a horse"]],
-        ["ride", "pp", "Nunca he montado en moto.", "I have never ridden a motorbike.", ["I have never ridden a motorcycle."], ["I have never ridden [on] a @motorbike"]],
+        ["ride", "ps", "Monté a caballo.", "I rode a horse."],
+        ["ride", "pp", "Nunca he montado en moto.", "I have never ridden a motorbike."],
         ["ring", "ps", "El teléfono sonó hace cinco minutos.", "The phone rang five minutes ago."],
-        ["ring", "pp", "El timbre ha sonado.", "The bell has rung.", ["The doorbell has rung."], ["The (bell|doorbell) has rung"]],
-        ["rise", "ps", "El sol salió a las siete.", "The sun rose at seven.", []],
-        ["rise", "pp", "Los precios han subido.", "Prices have risen.", ["The prices have risen."], ["[the] prices have risen"]],
+        ["ring", "pp", "El timbre ha sonado.", "The bell has rung."],
+        ["rise", "ps", "El sol salió a las siete.", "The sun rose at seven.", ["The sun came up at seven."]],
+        ["rise", "pp", "Los precios han subido.", "Prices have risen."],
         ["run", "ps", "Corrí cinco kilómetros.", "I ran five kilometres."],
         ["run", "pp", "El perro ha corrido durante una hora.", "The dog has run for an hour."],
-        ["say", "ps", "Ella dijo hola.", "She said hello.", ["She said hi."]],
+        ["say", "ps", "Ella dijo hola.", "She said hello."],
         ["say", "pp", "Lo has dicho tres veces.", "You have said it three times."],
         ["see", "ps", "Vi una película.", "I saw a film."],
-        ["see", "pp", "Nunca he visto la nieve.", "I have never seen snow.", ["I have never seen the snow."], ["I have never seen [the] snow"]],
+        ["see", "pp", "Nunca he visto la nieve.", "I have never seen snow."],
         ["sell", "ps", "Él vendió su coche hace un mes.", "He sold his car a month ago."],
-        ["sell", "pp", "Han vendido todas las entradas.", "They have sold all the tickets.", ["They have sold all of the tickets."], ["They have sold all [of] the tickets"]],
-        ["send", "ps", "Te envié un mensaje hace una hora.", "I sent you a message an hour ago.", ["I sent a message to you an hour ago."], ["I sent (you a @message|a @message to you) {T:an hour ago}"]],
-        ["send", "pp", "Ella me ha enviado un correo.", "She has sent me an email.", ["She has sent an email to me."], ["She has sent (me an (email|e-mail)|an (email|e-mail) to me)"]],
-        ["set", "ps", "Puse el despertador.", "I set the alarm.", ["I set my alarm."], ["I set (the|my) (alarm|alarm clock)"]],
+        ["sell", "pp", "Han vendido todas las entradas.", "They have sold all the tickets."],
+        ["send", "ps", "Te envié un mensaje hace una hora.", "I sent you a message an hour ago."],
+        ["send", "pp", "Ella me ha enviado un correo.", "She has sent me an email."],
+        ["set", "ps", "Puse el despertador.", "I set the alarm.", ["I set my alarm."]],
         ["set", "pp", "El sol se ha puesto.", "The sun has set."],
-        ["shake", "ps", "El suelo tembló.", "The ground shook.", ["The floor shook."], ["The (ground|floor) shook"]],
-        ["shake", "pp", "Él ha agitado la botella.", "He has shaken the bottle.", ["He has shaken the bottle up."], ["He has shaken ([up] the bottle|the bottle up)"]],
+        ["shake", "ps", "El suelo tembló.", "The ground shook."],
+        ["shake", "pp", "Él ha agitado la botella.", "He has shaken the bottle.", ["He has shaken the bottle up."]],
         ["shine", "ps", "Ayer brilló el sol.", "The sun shone yesterday."],
         ["shine", "pp", "El sol ha brillado desde el lunes.", "The sun has shone since Monday."],
         ["shoot", "ps", "El jugador disparó.", "The player shot."],
-        ["shoot", "pp", "Han rodado una película aquí.", "They have shot a film here.", ["They have shot a movie here."]],
+        ["shoot", "pp", "Han rodado una película aquí.", "They have shot a film here.", ["They have filmed a film here.", "They have made a film here."]],
         ["show", "ps", "Ella me enseñó sus fotos.", "She showed me her photos."],
-        ["show", "pp", "Él nos ha enseñado su casa.", "He has shown us his house.", ["He has shown his house to us."], ["He has shown (us his house|his house to us)"]],
+        ["show", "pp", "Él nos ha enseñado su casa.", "He has shown us his house."],
         ["shut", "ps", "Cerré la puerta.", "I shut the door."],
         ["shut", "pp", "Las tiendas han cerrado.", "The shops have shut."],
         ["sing", "ps", "Cantamos una canción.", "We sang a song."],
         ["sing", "pp", "Ella ha cantado en el coro desde 2019.", "She has sung in the choir since 2019."],
-        ["sink", "ps", "El barco se hundió hace cien años.", "The ship sank a hundred years ago.", ["The boat sank a hundred years ago."], ["The @ship sank {T:a hundred years ago}"]],
-        ["sink", "pp", "La barca se ha hundido.", "The boat has sunk.", ["The ship has sunk."], ["The @ship has sunk"]],
-        ["sit", "ps", "Me senté al lado de Ana.", "I sat next to Ana.", ["I sat beside Ana."], ["I sat [down] (next to|beside) Ana"]],
+        ["sink", "ps", "El barco se hundió hace cien años.", "The ship sank a hundred years ago.", ["The ship sank one hundred years ago.", "The ship sank 100 years ago."]],
+        ["sink", "pp", "La barca se ha hundido.", "The boat has sunk."],
+        ["sit", "ps", "Me senté al lado de Ana.", "I sat next to Ana."],
         ["sit", "pp", "Hemos estado sentados aquí durante dos horas.", "We have sat here for two hours."],
         ["sleep", "ps", "Dormí muy bien.", "I slept very well."],
         ["sleep", "pp", "El bebé ha dormido durante tres horas.", "The baby has slept for three hours."]
       ],
       iv_m5: [
-        ["smell", "ps", "La cocina olía a pan.", "The kitchen smelt of bread.", ["The kitchen smelled of bread."], ["The kitchen (smelt|smelled) (of|like) bread"]],
+        ["smell", "ps", "La cocina olía a pan.", "The kitchen smelt of bread."],
         ["smell", "pp", "He olido estas flores.", "I have smelt these flowers."],
-        ["speak", "ps", "Hablé con mi profesora.", "I spoke to my teacher.", ["I spoke with my teacher."], ["I spoke (to|with) my teacher"]],
-        ["speak", "pp", "Ella ha hablado inglés desde que era pequeña.", "She has spoken English since she was a child.", ["She has spoken English since she was little.", "She has spoken English since she was small."], ["She has spoken English {T:since she was (a child|little|small|a little girl|a girl|young)}"]],
-        ["spell", "ps", "Él escribió mal mi nombre.", "He spelt my name wrong.", ["He spelt my name wrongly.", "He misspelt my name."], ["He (spelt|spelled) my name (wrong|wrongly|incorrectly)", "He (misspelt|misspelled) my name"]],
-        ["spell", "pp", "Has escrito bien la palabra.", "You have spelt the word correctly.", ["You have spelt the word right."], ["You have (spelt|spelled) the word (correctly|right)"]],
-        ["spend", "ps", "Gasté todo mi dinero.", "I spent all my money.", ["I spent all of my money."], ["I spent all [of] my money"]],
+        ["speak", "ps", "Hablé con mi profesora.", "I spoke to my teacher."],
+        ["speak", "pp", "Ella ha hablado inglés desde que era pequeña.", "She has spoken English since she was a child.", ["She has spoken English since she was little.", "She has spoken English since she was small."]],
+        ["spell", "ps", "Él escribió mal mi nombre.", "He spelt my name wrong.", ["He misspelt my name.", "He spelt my name wrongly."]],
+        ["spell", "pp", "Has escrito bien la palabra.", "You have spelt the word correctly."],
+        ["spend", "ps", "Gasté todo mi dinero.", "I spent all my money."],
         ["spend", "pp", "Hemos pasado dos semanas en Italia.", "We have spent two weeks in Italy."],
         ["stand", "ps", "Estuvimos de pie una hora.", "We stood for an hour."],
-        ["stand", "pp", "Él ha estado de pie durante una hora.", "He has stood for an hour.", []],
+        ["stand", "pp", "Él ha estado de pie durante una hora.", "He has stood for an hour.", ["He has been standing all day."]],
         ["steal", "ps", "Alguien robó mi bici hace dos días.", "Someone stole my bike two days ago."],
-        ["steal", "pp", "Han robado un cuadro.", "They have stolen a painting.", ["They have stolen a picture."], ["They have stolen a (painting|picture)"]],
+        ["steal", "pp", "Han robado un cuadro.", "They have stolen a painting."],
         ["stick", "ps", "Pegué una foto en la pared.", "I stuck a photo on the wall."],
         ["stick", "pp", "Ella ha pegado pegatinas en su libro.", "She has stuck stickers on her book."],
         ["sting", "ps", "Una abeja me picó.", "A bee stung me."],
-        ["sting", "pp", "Una avispa le ha picado.", "A wasp has stung him.", ["A wasp has stung her."], ["A wasp has stung (him|her)"]],
+        ["sting", "pp", "Una avispa le ha picado.", "A wasp has stung him."],
         ["sweep", "ps", "Barrí el suelo.", "I swept the floor."],
-        ["sweep", "pp", "Papá ha barrido las hojas.", "Dad has swept the leaves.", ["Dad has swept up the leaves."], ["[my] @father has swept ([up] the leaves|the leaves up)"]],
+        ["sweep", "pp", "Papá ha barrido las hojas.", "Dad has swept the leaves."],
         ["swim", "ps", "Nadamos en el mar hace un mes.", "We swam in the sea a month ago."],
         ["swim", "pp", "Nunca he nadado aquí.", "I have never swum here."],
-        ["take", "ps", "Hice muchas fotos.", "I took a lot of photos.", ["I took many photos."], ["I took (a lot of|lots of|many) @photos"]],
+        ["take", "ps", "Hice muchas fotos.", "I took a lot of photos."],
         ["take", "pp", "Alguien ha cogido mi boli.", "Someone has taken my pen.", ["Someone has taken my biro."]],
-        ["teach", "ps", "Mi abuelo me enseñó ajedrez.", "My grandfather taught me chess.", ["My grandfather taught me how to play chess."], ["My @grandfather taught me ([how] to play chess|chess)"]],
-        ["teach", "pp", "Ella ha dado clase aquí desde 2010.", "She has taught here since 2010.", []],
-        ["tear", "ps", "Rompí el papel.", "I tore the paper.", []],
+        ["teach", "ps", "Mi abuelo me enseñó ajedrez.", "My grandfather taught me chess."],
+        ["teach", "pp", "Ella ha dado clase aquí desde 2010.", "She has taught here since 2010.", ["She has taught us a lot of things."]],
+        ["tear", "ps", "Rompí el papel.", "I tore the paper.", ["I ripped the paper."]],
         ["tear", "pp", "El perro ha roto mis deberes.", "The dog has torn my homework."],
         ["tell", "ps", "Ella me contó una historia.", "She told me a story."],
         ["tell", "pp", "Él me ha dicho la verdad.", "He has told me the truth."],
-        ["think", "ps", "Pensé que era fácil.", "I thought it was easy.", ["I thought that it was easy."], ["I thought [that] it was easy"]],
+        ["think", "ps", "Pensé que era fácil.", "I thought it was easy."],
         ["think", "pp", "He pensado en tu idea.", "I have thought about your idea."],
         ["throw", "ps", "Él lanzó la pelota.", "He threw the ball."],
         ["throw", "pp", "Alguien ha tirado basura.", "Someone has thrown rubbish."],
         ["understand", "ps", "Entendí la pregunta.", "I understood the question."],
-        ["understand", "pp", "Ahora he entendido la regla.", "Now I have understood the rule.", ["I have understood the rule now."], ["(now I have understood the rule|I have now understood the rule|I have understood the rule now)"]],
+        ["understand", "pp", "Ahora he entendido la regla.", "Now I have understood the rule."],
         ["wake_up", "ps", "Me desperté hace una hora.", "I woke up an hour ago."],
         ["wake_up", "pp", "El bebé se ha despertado.", "The baby has woken up."],
         ["wear", "ps", "Ella llevó un vestido rojo.", "She wore a red dress."],
-        ["wear", "pp", "He llevado estos zapatos dos veces.", "I have worn these shoes twice.", ["I have worn these shoes two times."]],
+        ["wear", "pp", "He llevado estos zapatos dos veces.", "I have worn these shoes twice."],
         ["win", "ps", "Ganamos el partido hace tres semanas.", "We won the match three weeks ago."],
         ["win", "pp", "Ella ha ganado tres medallas.", "She has won three medals."],
         ["write", "ps", "Escribí una carta hace dos días.", "I wrote a letter two days ago."],
@@ -1380,70 +1378,71 @@
     };
 
     /* ============================================================
-       NIVEL 3 · CONFIGURACIÓN PROPIA DE ESTA APP
-       La usa el motor común L3-ENGINE (más abajo).
-       - syn:   grupos de sinónimos que las plantillas llaman con @nombre
-                (se suman a los grupos comunes del motor).
-       - slots: huecos {T:clave} de las plantillas. "forms" son las formas
-                equivalentes (admite la sintaxis de plantilla) y "pos" dice
-                adónde se pueden mover: "start" (principio), "end" (final).
-                Siempre vale también el sitio donde está escrito.
-       Sintaxis de las plantillas (campo pat de cada frase):
-         (a|b|c) alternativas · [x] opcional · [a|b] opcional con alternativas
-         {T:clave} hueco movible · @nombre grupo de sinónimos
-         ; separa oraciones: un hueco solo se mueve dentro de su oración.
-       Las contracciones, mayúsculas, signos, cifras/letras y la ortografía
-       británica/americana NO se escriben: el motor ya las acepta.
-       - auto:  lo que se aplica solo a "ingles" y "otras" de TR3 (ver L3-ENGINE v1.1).
+       SINONIMOS aceptados en el nivel 3.
+       El primero de cada linea es la forma "oficial": al corregir,
+       todas las de su linea se consideran la misma palabra.
+       Se pueden anadir mas lineas sin tocar nada mas.
        ============================================================ */
-    const L3_CONFIG = {
-      syn: {
-        phone: "(phone|mobile|mobile phone|cell phone|cellphone|smartphone)",
-        bike: "(bike|bicycle)",
-        films: "(films|movies)",
-        cinema: "(the cinema|the movies|the pictures)",
-        grandma: "(grandma|grandmother|granny|gran|nan)",
-        grandfather: "(grandfather|grandpa|grandad|granddad)",
-        photos: "(photos|pictures|photographs)",
-        photo: "(photo|picture|photograph)",
-        present: "(present|gift)",
-        match: "(match|game)",
-        exam: "(exam|test)",
-        shops: "(shops|stores)",
-        motorbike: "(motorbike|motorcycle)",
-        hello: "(hello|hi)",
-        pen: "(pen|biro)",
-        alot: "(a lot of|lots of)",
-        strange: "(strange|weird)",
-        thief: "(thief|robber)",
-        message: "(message|text|text message)",
-        rubbish: "(rubbish|litter|trash|garbage)",
-        someone: "(someone|somebody)",
-        very: "(very|really)",
-        sofa: "(sofa|couch)",
-        ship: "(ship|boat)"
-      },
-      slots: {},
-      auto: {
-        syn: ["phone", "bike", "film", "films", "cinema", "mother", "father", "grandma", "grandfather", "photos", "photo",
-              "present", "match", "exam", "shops", "motorbike", "hello", "pen", "alot", "strange", "thief", "message",
-              "rubbish", "someone", "very", "sofa"],
-        move: [
-          "yesterday", "today", "tonight",
-          "last (?:night|week|weekend|month|year|summer|winter|spring|autumn|monday|tuesday|wednesday|thursday|friday|saturday|sunday|christmas)",
-          "this (?:morning|afternoon|evening|week|month|year|summer|winter)",
-          "in \\d{4}",
-          "(?:(?:a|one) hundred|a|an|one|two|three|four|five|six|seven|eight|nine|ten|\\d+) (?:years?|months?|weeks?|days?|hours?|minutes?) ago",
-          "since [a-z0-9' ]+"
-        ],
-        rewrite: [
-          ["\\ba (second|minute|day|week|month|year) ago\\b", "(a|one) $1 ago"],
-          ["\\ban hour\\b", "(an|one) hour"],
-          ["\\bfor a (minute|day|week|month|year)\\b", "for (a|one) $1"],
-          ["\\btwice\\b", "(twice|two times)"]
-        ]
-      }
-    };
+    const SWAPS = [
+      // contracciones
+      ["i have", "ive"], ["we have", "weve"], ["they have", "theyve"], ["you have", "youve"],
+      ["he has", "hes", "he is"], ["she has", "shes", "she is"], ["it has", "its", "it is"],
+      ["i am", "im"], ["do not", "dont"], ["does not", "doesnt"], ["did not", "didnt"],
+      ["cannot", "can not", "cant"], ["is not", "isnt"], ["are not", "arent"],
+      ["was not", "wasnt"], ["were not", "werent"], ["has not", "hasnt"], ["have not", "havent"],
+      ["could not", "couldnt"], ["would not", "wouldnt"], ["let us", "lets"], ["there is", "theres"],
+      // ingles britanico / americano
+      ["centre", "center"], ["theatre", "theater"], ["favourite", "favorite"], ["colour", "color"],
+      ["neighbour", "neighbor"], ["kilometres", "kilometers"], ["metres", "meters"],
+      ["practise", "practice"], ["grey", "gray"], ["travelled", "traveled"],
+      // sinonimos de vocabulario
+      ["phone", "mobile", "mobile phone", "cell phone", "cellphone", "telephone"],
+      ["bike", "bicycle"], ["film", "movie"], ["films", "movies"],
+      ["the cinema", "the movies", "the movie theatre"],
+      ["mum", "mom", "mummy"], ["dad", "daddy"], ["mother", "mum", "mom"], ["father", "dad"],
+      ["grandma", "grandmother", "granny", "grandmum"], ["grandfather", "grandpa", "granddad", "grandad"],
+      ["a lot of", "lots of", "many", "much", "plenty of"], ["a lot", "lots", "very much"],
+      ["photos", "pictures", "photographs"], ["photo", "picture", "photograph"],
+      ["picture", "drawing"], ["trainers", "sneakers", "trainers shoes"],
+      ["rubbish", "litter", "trash", "garbage"], ["biscuits", "cookies"],
+      ["sports centre", "sports hall", "leisure centre"], ["holiday", "holidays", "vacation"],
+      ["on holiday", "on vacation"], ["wallet", "purse"], ["wardrobe", "closet"], ["attic", "loft"],
+      ["shop", "store"], ["shops", "stores"], ["town", "village"], ["garden", "yard"],
+      ["petrol", "gas", "gasoline"], ["plaster", "band aid", "bandage", "plasters"],
+      ["head teacher", "headmaster", "headmistress", "principal", "school head"],
+      ["pen friend", "pen pal", "penfriend", "penpal"], ["primary school", "elementary school"],
+      ["bag", "rucksack", "backpack", "schoolbag"], ["sofa", "couch"], ["notebook", "exercise book"],
+      ["marks", "grades", "results"], ["exam", "test", "examination"], ["exams", "tests"],
+      ["flat", "apartment"], ["lorry", "truck"], ["football", "soccer"], ["sweets", "candy"],
+      ["jumper", "sweater"], ["boat", "ship"], ["glasses", "spectacles"],
+      ["pieces", "slices"], ["strange", "weird", "odd", "funny"], ["noise", "sound"],
+      ["very", "really", "so"], ["great", "fantastic", "brilliant", "amazing", "wonderful", "lovely"],
+      ["beautiful", "lovely", "gorgeous", "nice", "pretty"], ["delicious", "tasty"],
+      ["children", "kids"], ["everybody", "everyone"], ["nobody", "no one", "no-one"],
+      ["somebody", "someone"], ["at last", "finally", "in the end"], ["again", "one more time"],
+      ["tidy", "tidy up", "clean", "clean up"], ["ill", "sick"], ["little", "small"],
+      ["old town", "historic centre", "old part of town"], ["job", "work"],
+      ["hens", "chickens"], ["street", "road"], ["angry", "cross"], ["quickly", "fast"],
+      // numeros: se acepta la cifra y la palabra
+      ["one", "1"], ["two", "2"], ["three", "3"], ["four", "4"], ["five", "5"], ["six", "6"],
+      ["seven", "7"], ["eight", "8"], ["nine", "9"], ["ten", "10"], ["eleven", "11"],
+      ["twelve", "12"], ["eighteen", "18"], ["twenty", "20"], ["sixty", "60"], ["hundred", "100"],
+      ["twice", "two times", "2 times"],
+      ["match", "game"], ["floor", "ground"], ["euros", "euro"], ["present", "gift"],
+      ["surname", "last name", "family name"], ["lunch", "food"], ["picture", "drawing"],
+      ["sports centre", "sports center"], ["road", "street"],
+      // formas verbales britanicas / americanas: valen las dos
+      ["burnt", "burned"], ["dreamt", "dreamed"], ["learnt", "learned"], ["leant", "leaned"],
+      ["knelt", "kneeled"], ["smelt", "smelled"], ["spelt", "spelled"], ["lit", "lighted"],
+      ["pled", "pleaded"], ["spat", "spit"], ["sweat", "sweated"], ["stank", "stunk"],
+      ["got", "gotten", "received", "obtained"], ["trod", "trodden"], ["hung", "hanged"],
+      ["came", "arrived"], ["thief", "robber", "burglar"], ["pen", "biro"],
+      ["motorbike", "motorcycle"], ["correctly", "right", "well"], ["hello", "hi"],
+      ["chess", "the chess"], ["hard", "strongly"], ["hole", "big hole"]
+    ];
+
+    /* Expresiones de tiempo: dan igual al principio o al final de la frase. */
+    const TIME_RX = /\b(yesterday|today|tonight|last (?:night|week|weekend|month|year|summer|winter|spring|autumn|monday|tuesday|wednesday|thursday|friday|saturday|sunday|christmas)|this (?:morning|afternoon|evening|week|month|year|summer|winter)|in \d{4}|\d+ (?:years?|months?|weeks?|days?|hours?|minutes?) ago|on (?:monday|tuesday|wednesday|thursday|friday|saturday|sunday)(?: night| morning| afternoon| evening)?|every day|all day|all afternoon|at last|already|only twice|three times|many times)\b/g;
 
     /* ============================================================
        LOS 3 NIVELES DE CADA MODULO
@@ -1457,8 +1456,7 @@
         how: [
           "You are given the <strong>meaning in Spanish</strong>. Write the <strong>three forms</strong> of that verb in English.",
           "Order: <strong class=\"text-emerald-300\">infinitive (V1)</strong> \u2192 <strong class=\"text-sky-300\">past simple (V2)</strong> \u2192 <strong class=\"text-amber-300\">past participle (V3)</strong>.",
-          "<strong>Capital letters don\u2019t matter.</strong> When the list gives two forms (<em>learnt / learned</em>), either one is accepted, or both.",
-          "The verb <strong>be</strong> has <strong>two boxes</strong> for the past simple: write <strong>was</strong> in one and <strong>were</strong> in the other.",
+          "<strong>Capital letters don\u2019t matter.</strong> When the list gives two forms (<em>learnt / learned</em>, <em>was / were</em>), either one is accepted.",
           "The three forms must be right for the answer to count."
         ] },
       { n: 2, type: "gap",       name: "Level 2 \u00b7 Fill in the gaps",  tag: "L2", icon: "fa-pen-to-square", pass: 90,
@@ -1477,10 +1475,8 @@
           "Write the <strong>whole sentence</strong> in English, not only the verb. They are <strong>short sentences</strong>.",
           "The verb you have to use is written <strong>in brackets</strong> next to the sentence.",
           "The <strong class=\"text-amber-300\">\ud83d\udca1 Vocabulary</strong> button gives you the words of the sentence, but <strong>not</strong> the form of the verb: that one you have to think about.",
-          "<strong>These things do NOT matter:</strong> capital letters, punctuation (. , ! ? \u2026), apostrophes and contractions (<em>I have = I\u2019ve = Ive</em>), numbers in figures or words (<em>5 = five</em>) and British or American spelling (<em>burnt / burned</em>).",
-          "<strong>Lots of translations are accepted</strong>: synonyms (<em>phone / mobile</em>, <em>film / movie</em>, <em>present / gift</em>\u2026) and other correct ways of saying the same thing.",
-          "The time expression can go at the beginning or at the end: both are right.",
-          "<strong>These things DO matter:</strong> the <strong>verb in brackets</strong> in the right form, the <strong>word order</strong>, the <strong>grammar</strong> and the <strong>spelling</strong> of the words."
+          "<strong>Lots of translations are accepted</strong> (<em>phone / mobile</em>, <em>film / movie</em>, <em>I have / I\u2019ve</em>\u2026), and capital letters, commas and the full stop don\u2019t matter.",
+          "The time expression can go at the beginning or at the end: both are right."
         ] }
     ];
 
@@ -1520,12 +1516,10 @@
           });
         } else {
           questions = TR3[def.id].map((row, i) => {
-            const [vk, tense, es, en, alts, pat] = row;
+            const [vk, tense, es, en, alts] = row;
             return {
               qid: `${def.id}_l3_${i}`, type: "translate", prompt: es,
-              answers: [en].concat((alts || []).slice(0, 2)),   // lo que ve el alumno
-              alts: alts || [], pat: pat || null,                 // solo para corregir (L3-ENGINE)
-              verbKey: vk, tense: tense
+              answers: [en].concat(alts || []), verbKey: vk, tense: tense
             };
           });
         }
@@ -1561,39 +1555,18 @@
         .replace(/\s+/g, " ");
     }
 
-    /* Verbos cuyo pasado tiene DOS formas que hay que escribir las dos (una en cada casilla). */
-    const PAST_BOTH = { be: true };
-
-    /* Separa lo que ha escrito el alumno cuando pone dos formas en una casilla:
-       "learnt/learned", "learnt - learned", "learnt, learned", "learnt or learned", "learnt learned"... */
-    function formPieces(value, valid) {
-      const v = normalize(value).replace(/\s+/g, " ");
-      if (!v) return [];
-      if (valid.indexOf(v) >= 0) return [v];                       // forma de varias palabras: "woke up"
-      let parts = v.split(/\s*(?:[,\/|;+&\\\-\u2013\u2014]|\bor\b|\band\b)\s*/).filter(Boolean);
-      if (parts.length === 1) parts = v.split(" ");
-      return parts;
-    }
-    function oneFormOk(value, valid) {                             // vale cualquiera de las formas (o varias bien separadas)
-      const ps = formPieces(value, valid);
-      return ps.length > 0 && ps.every(p => valid.indexOf(p) >= 0);
+    // Para las traducciones: ignora comas, puntos y apostrofes (I've = Ive = I have? no, solo el apostrofe)
+    function normalizeLoose(str) {
+      return normalize(str).replace(/[.,;:!?"']/g, "").replace(/\s+/g, " ").trim();
     }
 
     function gradeForms(values, q) {
-      const v = q.verb, low = a => a.map(x => normalize(x));
-      const okInf = normalize(values[0]) === normalize(v.inf);
-      const partList = low(withAlt(v.part, ALT_PART));
-      if (PAST_BOTH[v.key]) {                                      // BE: was en una casilla y were en la otra (en cualquier orden)
-        const need = low(v.past);
-        const a = formPieces(values[1], need), b = formPieces(values[2], need), all = a.concat(b);
-        const both = all.length === need.length && need.every(n => all.indexOf(n) >= 0);
-        const single = (x, y) => x.length === 1 && need.indexOf(x[0]) >= 0 && !(y.length === 1 && y[0] === x[0]);
-        const okA = both || single(a, b), okB = both || single(b, a);
-        const okPart = oneFormOk(values[3], partList);
-        return { ok: okInf && both && okPart, parts: [okInf, okA, okB, okPart] };
-      }
-      const okPast = oneFormOk(values[1], low(withAlt(v.past, ALT_PAST)));
-      const okPart = oneFormOk(values[2], partList);
+      const v = q.verb;
+      const okInf  = normalize(values[0]) === normalize(v.inf);
+      const okPast = withAlt(v.past, ALT_PAST).some(a => normalize(a) === normalize(values[1]))
+                     || normalize(values[1]) === normalize(v.past.join("/"));
+      const okPart = withAlt(v.part, ALT_PART).some(a => normalize(a) === normalize(values[2]))
+                     || normalize(values[2]) === normalize(v.part.join("/"));
       return { ok: okInf && okPast && okPart, parts: [okInf, okPast, okPart] };
     }
 
@@ -1605,435 +1578,44 @@
       return q.answers.some(a => normalize(a) === user);
     }
 
-    /* ===== L3-ENGINE v1.1 · START (motor común de corrección del Level 3: copiar igual en todas las apps) =====
-       Cómo corrige:
-       1. Las respuestas aceptadas de cada pregunta (plantillas "pat" + "en" + "alts") se expanden
-          UNA vez, la primera vez que se corrige esa pregunta, a un Set de frases canónicas (q.accepted,
-          no enumerable: nunca se guarda ni se envía).
-       2. La respuesta del alumno se normaliza: mayúsculas, signos (se cambian por espacio), apóstrofos,
-          cifras/letras, horas, o'clock y ortografía británica/americana.
-       3. Las contracciones del alumno (con o sin apóstrofo) se leen de todas las maneras posibles
-          ('s = is / has / posesivo; 'd = would / had; were = were / we are; its = its / it is...).
-          Es correcta si ALGUNA lectura coincide EXACTAMENTE, en el mismo orden, con una frase aceptada.
-          No hay bolsa de palabras: el orden cuenta. Solo se mueve lo que la plantilla deja mover.
-       v1.1: L3_CONFIG.auto (opcional) convierte "en" y "alts" en plantillas automáticamente:
-          auto.move    = expresiones de tiempo que, al principio o al final, pueden ir en el otro extremo;
-          auto.syn     = nombres de grupos de sinónimos (L3_CONFIG.syn o del motor) que se aplican solos;
-          auto.rewrite = [regex, sustitución] para variantes fijas ("a week ago" -> "(a|one) week ago").
-       ======================================================================================= */
-    const L3 = (function () {
-      const MAX_VARIANTS = 5000;
-      const INVALID = "\u0000";
-      const cfg = () => (typeof L3_CONFIG !== "undefined" ? L3_CONFIG : { syn: {}, slots: {} });
-
-      /* Grupos de sinónimos comunes a todas las apps (@nombre en las plantillas) */
-      const SYN = {
-        mobile: "(mobile|mobile phone|phone|cell phone|cellphone|smartphone)",
-        mother: "(mother|mum|mummy)",                 // mom / mommy: ya las iguala la ortografía
-        father: "(father|dad|daddy)",
-        film: "(film|movie)",
-        tv: "(television|tv|telly)",
-        flat: "(flat|apartment)",
-        series: "(series|show|tv series|tv show)",
-        dinner: "(dinner|supper)",
-        halfhour: "(half an hour|a half hour|thirty minutes)",   // 30 minutes: ya lo igualan los números
-        weekends: "(at weekends|on weekends|at the weekend|on the weekend|on the weekends)",
-        holiday: "(holiday|holidays|vacation)",
-        grandparents: "(grandparents|grandmother and grandfather|grandfather and grandmother|grandma and grandpa|grandpa and grandma)"
-      };
-
-      /* Ortografía británica / americana y formas dobles de verbos irregulares:
-         cada palabra se reduce a la primera forma del grupo (en los dos lados). */
-      const SPELL_GROUPS = [
-        ["mum", "mom"], ["mummy", "mommy"], ["maths", "math"], ["grey", "gray"], ["ok", "okay"],
-        ["colour", "color"], ["colours", "colors"], ["favourite", "favorite"], ["favourites", "favorites"],
-        ["honour", "honor"], ["neighbour", "neighbor"], ["neighbours", "neighbors"], ["flavour", "flavor"],
-        ["behaviour", "behavior"], ["humour", "humor"], ["labour", "labor"], ["harbour", "harbor"],
-        ["centre", "center"], ["centres", "centers"], ["theatre", "theater"], ["theatres", "theaters"],
-        ["metre", "meter"], ["metres", "meters"], ["litre", "liter"], ["litres", "liters"],
-        ["kilometre", "kilometer"], ["kilometres", "kilometers"], ["fibre", "fiber"],
-        ["programme", "program"], ["programmes", "programs"], ["catalogue", "catalog"], ["dialogue", "dialog"],
-        ["cheque", "check"], ["tyre", "tire"], ["tyres", "tires"], ["aeroplane", "airplane"], ["jewellery", "jewelry"],
-        ["pyjamas", "pajamas"], ["defence", "defense"], ["licence", "license"], ["practise", "practice"],
-        ["practising", "practicing"], ["practised", "practiced"], ["cosy", "cozy"], ["ageing", "aging"],
-        ["judgement", "judgment"], ["towards", "toward"], ["whilst", "while"], ["amongst", "among"],
-        ["travelling", "traveling"], ["travelled", "traveled"], ["traveller", "traveler"], ["travellers", "travelers"],
-        ["cancelled", "canceled"], ["cancelling", "canceling"], ["modelling", "modeling"], ["labelled", "labeled"],
-        ["fuelled", "fueled"], ["counselling", "counseling"], ["enrol", "enroll"], ["fulfil", "fulfill"],
-        ["learnt", "learned"], ["dreamt", "dreamed"], ["burnt", "burned"], ["spelt", "spelled"],
-        ["smelt", "smelled"], ["leant", "leaned"], ["spoilt", "spoiled"], ["knelt", "kneeled"], ["spilt", "spilled"],
-        ["realise", "realize"], ["realised", "realized"], ["realising", "realizing"],
-        ["organise", "organize"], ["organised", "organized"], ["organising", "organizing"],
-        ["recognise", "recognize"], ["recognised", "recognized"], ["apologise", "apologize"], ["apologised", "apologized"],
-        ["specialise", "specialize"], ["memorise", "memorize"], ["analyse", "analyze"], ["analysed", "analyzed"],
-        ["criticise", "criticize"], ["summarise", "summarize"], ["emphasise", "emphasize"], ["finalise", "finalize"]
-      ];
-      const SPELL = {};
-      SPELL_GROUPS.forEach(g => g.slice(1).forEach(w => { SPELL[w] = [g[0]]; }));
-      SPELL.cannot = ["can", "not"];
-
-      /* ---------- 1. normalizador de texto ---------- */
-      function prep(str) {
-        let s = String(str == null ? "" : str);
-        s = s.replace(/\s*[º°˚]\s*c\b/gi, " degrees celsius ").replace(/[º°˚]/g, " degrees ");
-        s = s.replace(/[‘’‛ʼʹ`´′]/g, "'");   // antes de NFKC (NFKC rompe el ´)
-        s = s.normalize("NFKC").toLowerCase();
-        s = s.replace(/\bo\s*'?\s*clock\b/g, " ");                           // o'clock / oclock / o clock: opcional
-        s = s.replace(/\b(\d{1,2})[:.]00\b/g, "$1").replace(/\b(\d{1,2})[:.](\d{2})\b/g, "$1 $2");
-        s = s.replace(/\b(\d{1,2})(am|pm)\b/g, "$1 $2");
-        s = s.replace(/[^\p{L}\p{N}']+/gu, " ");                             // TODO signo -> espacio
-        s = s.replace(/(^|\s)'+/g, "$1").replace(/'+(?=\s|$)/g, "");          // comillas simples sueltas
-        return s.replace(/\s+/g, " ").trim();
-      }
-
-      /* ---------- 2. números: cifras y letras valen igual ---------- */
-      const UNITS = "zero one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen".split(" ");
-      const TENS = { twenty: 20, thirty: 30, forty: 40, fifty: 50, sixty: 60, seventy: 70, eighty: 80, ninety: 90 };
-      const ORD = { first: 1, second: 2, third: 3, fourth: 4, fifth: 5, sixth: 6, seventh: 7, eighth: 8, ninth: 9,
-        tenth: 10, eleventh: 11, twelfth: 12, thirteenth: 13, fourteenth: 14, fifteenth: 15, sixteenth: 16,
-        seventeenth: 17, eighteenth: 18, nineteenth: 19, twentieth: 20, thirtieth: 30 };
-      function numWord(w) {
-        const u = UNITS.indexOf(w);
-        if (u >= 0) return { v: u, k: u < 10 ? "small" : "teen" };
-        if (TENS[w] !== undefined) return { v: TENS[w], k: "tens" };
-        return null;
-      }
-      function canonNumbers(toks) {
-        const out = [], simple = [];   // simple = número de 10-99 dicho con letras (para años: twenty twenty)
-        let i = 0;
-        while (i < toks.length) {
-          const t = toks[i];
-          let m = /^(\d+)(st|nd|rd|th)$/.exec(t);
-          if (m) { out.push("#" + parseInt(m[1], 10)); simple.push(false); i++; continue; }
-          if (TENS[t] !== undefined && ORD[toks[i + 1]] !== undefined && ORD[toks[i + 1]] < 10) {
-            out.push("#" + (TENS[t] + ORD[toks[i + 1]])); simple.push(false); i += 2; continue;
-          }
-          if (ORD[t] !== undefined) { out.push("#" + ORD[t]); simple.push(false); i++; continue; }
-          if (/^\d{1,6}$/.test(t)) { out.push(String(parseInt(t, 10))); simple.push(false); i++; continue; }
-          let j = i, total = 0, cur = 0, last = "", used = false, big = false;
-          if (toks[j] === "a" && (toks[j + 1] === "hundred" || toks[j + 1] === "thousand")) { j++; last = "a"; }
-          while (j < toks.length) {
-            const w = toks[j], n = numWord(w);
-            if (n) {
-              const okPrev = n.k === "small" ? ["", "tens", "hundred", "thousand"] : ["", "hundred", "thousand"];
-              if (okPrev.indexOf(last) < 0) break;
-              cur += n.v; last = n.k; used = true; j++; continue;
-            }
-            if (w === "hundred" && (last === "small" || last === "teen" || last === "a")) { cur = (cur || 1) * 100; last = "hundred"; used = big = true; j++; continue; }
-            if (w === "thousand" && ["small", "teen", "tens", "hundred", "a"].indexOf(last) >= 0) { total += (cur || 1) * 1000; cur = 0; last = "thousand"; used = big = true; j++; continue; }
-            if (w === "and" && (last === "hundred" || last === "thousand") && numWord(toks[j + 1] || "")) { j++; continue; }
-            break;
-          }
-          if (used) {
-            const v = total + cur;
-            out.push(String(v)); simple.push(!big && v >= 10 && v <= 99); i = j; continue;
-          }
-          out.push(t); simple.push(false); i++;
-        }
-        // años dichos por pares: "twenty twenty" = 2020, "nineteen ninety nine" = 1999
-        const res = [];
-        for (let k = 0; k < out.length; k++) {
-          if (simple[k] && simple[k + 1] && (out[k] === "19" || out[k] === "20")) { res.push(String(+out[k] * 100 + +out[k + 1])); k++; }
-          else res.push(out[k]);
-        }
-        return res;
-      }
-
-      /* texto -> fichas canónicas (sin resolver aún las contracciones) */
-      function baseTokens(str) {
-        const s = prep(str);
-        if (!s) return [];
-        let toks = canonNumbers(s.split(" "));
-        const out = [];
-        for (let i = 0; i < toks.length; i++) {
-          const t = toks[i], prev = out[out.length - 1];
-          const isNum = prev !== undefined && /^\d+$/.test(prev);
-          if (isNum && (t === "am" || t === "pm")) continue;                                  // 7 am = 7
-          if (isNum && (t === "a" || t === "p") && toks[i + 1] === "m") { i++; continue; }    // 7 a.m. = 7
-          (SPELL[t] || [t]).forEach(x => out.push(x));
-        }
-        return out;
-      }
-
-      /* ---------- 3. contracciones ---------- */
-      const NEG_BASE = { do: "do", does: "does", did: "did", is: "is", are: "are", was: "was", were: "were",
-        have: "have", has: "has", had: "had", could: "could", should: "should", would: "would", must: "must",
-        need: "need", might: "might", ca: "can", wo: "will", sha: "shall", dare: "dare", ought: "ought" };
-      const PRON = new Set(["i", "you", "he", "she", "it", "we", "they", "that", "this", "there", "here", "what",
-        "who", "where", "when", "why", "how", "let", "everyone", "everybody", "nobody", "someone", "somebody"]);
-      const ADV = new Set(["never", "just", "already", "ever", "always", "still", "not", "recently", "also", "often",
-        "only", "really", "finally", "usually", "sometimes", "certainly", "probably", "all"]);
-      const PP = new Set(("been got gone done seen eaten taken given written known lost left made had bought found told said " +
-        "come become run won begun ridden driven broken spoken forgotten chosen fallen flown grown drawn shown thrown worn " +
-        "sung swum drunk heard met sent spent slept kept felt taught thought brought caught fought sold built learnt dreamt " +
-        "burnt put cut hit set shut hurt cost understood stood sat held paid meant stolen woken hidden bitten beaten shaken " +
-        "frozen forgiven lent lit fed led read rung sunk sworn torn woken wound gotten").split(" "));
-      const ED_ADJ = new Set(["tired", "bored", "interested", "excited", "married", "worried", "surprised", "closed",
-        "called", "located", "scared", "pleased", "disappointed", "annoyed", "embarrassed", "amazed", "confused", "retired"]);
-      function nextWord(rest) { let k = 0; while (k < rest.length && ADV.has(rest[k])) k++; return rest[k] || ""; }
-      function looksPP(w) { return w === "better" || PP.has(w) || (/ed$/.test(w) && !ED_ADJ.has(w)); }
-
-      // Formas sin apóstrofo. Las que son palabras inglesas reales llevan primero su lectura literal.
-      const NOAPOS = {};
-      const addNA = (w, list) => { NOAPOS[w] = list.map(x => x.split(" ")); };
-      [["im", "i am"], ["ive", "i have"], ["youre", "you are"], ["youve", "you have"], ["youll", "you will"],
-       ["weve", "we have"], ["theyre", "they are"], ["theyve", "they have"], ["theyll", "they will"],
-       ["itll", "it will"], ["thatll", "that will"], ["therell", "there will"], ["therere", "there are"],
-       ["whatre", "what are"], ["whore", "who are"], ["heres", "here is"], ["whens", "when is"], ["whys", "why is"],
-       ["couldve", "could have"], ["shouldve", "should have"], ["wouldve", "would have"], ["mightve", "might have"],
-       ["mustve", "must have"], ["whove", "who have"], ["cant", "cant|can not"], ["wont", "wont|will not"],
-       ["dont", "do not"], ["doesnt", "does not"], ["didnt", "did not"], ["isnt", "is not"], ["arent", "are not"],
-       ["wasnt", "was not"], ["werent", "were not"], ["havent", "have not"], ["hasnt", "has not"], ["hadnt", "had not"],
-       ["couldnt", "could not"], ["shouldnt", "should not"], ["wouldnt", "would not"], ["mustnt", "must not"],
-       ["neednt", "need not"], ["mightnt", "might not"], ["shant", "shall not"],
-       ["ill", "ill|i will"], ["well", "well|we will"], ["hell", "hell|he will"], ["shell", "shell|she will"],
-       ["were", "were|we are"], ["its", "its|it is|it has"], ["lets", "lets|let us"],
-       ["hes", "he is|he has"], ["shes", "she is|she has"], ["thats", "that is|that has"], ["theres", "there is|there has"],
-       ["whats", "what is|what has"], ["whos", "who is|who has"], ["wheres", "where is"], ["hows", "how is"],
-       ["id", "id|i would|i had"], ["youd", "you would|you had"], ["hed", "he would|he had"],
-       ["shed", "shed|she would|she had"], ["wed", "wed|we would|we had"], ["theyd", "they would|they had"],
-       ["itd", "it would|it had"], ["whod", "who would|who had"]
-      ].forEach(([w, r]) => addNA(w, r.split("|")));
-
-      // Lecturas posibles de una ficha escrita por el ALUMNO
-      function studentReadings(t, next) {
-        let r;
-        if (t.indexOf("'") >= 0) r = aposReadings(t, true);
-        else if (NOAPOS[t]) r = NOAPOS[t];
-        else {
-          r = [[t]];
-          // posesivo o 's sin apóstrofo: "my sisters book", "my brothers living"
-          if (t.length >= 4 && /[a-z]s$/.test(t) && !/(ss|us|is)$/.test(t)) {
-            const b = t.slice(0, -1);
-            r = r.concat([[b + "'s"], [b, "is"], [b, "has"]]);
-          }
-        }
-        // "I'll not" no se acepta (poco natural): se exige "won't / will not"
-        if (next === "not") r = r.map(x => (x.length === 2 && x[1] === "will" && t !== "will") ? [INVALID] : x);
-        return r;
-      }
-
-      function aposReadings(t) {
-        let m;
-        if (t === "let's") return [["let", "us"]];
-        if ((m = /^(.+)n't$/.exec(t))) return NEG_BASE[m[1]] ? [[NEG_BASE[m[1]], "not"]] : [[t]];
-        if ((m = /^(.+)'m$/.exec(t))) return [[m[1], "am"]];
-        if ((m = /^(.+)'re$/.exec(t))) return [[m[1], "are"]];
-        if ((m = /^(.+)'ve$/.exec(t))) return [[m[1], "have"]];
-        if ((m = /^(.+)'ll$/.exec(t))) return [[m[1], "will"]];
-        if ((m = /^(.+)'d$/.exec(t))) return [[m[1], "would"], [m[1], "had"]];
-        if ((m = /^(.+)'s$/.exec(t))) return PRON.has(m[1]) ? [[m[1], "is"], [m[1], "has"]] : [[t], [m[1], "is"], [m[1], "has"]];
-        return [[t]];
-      }
-
-      // Lecturas de una frase escrita por el PROFESOR: las contracciones se resuelven por contexto
-      function modelReadings(str) {
-        const toks = baseTokens(str);
-        let outs = [[]];
-        toks.forEach((t, i) => {
-          let opts;
-          if (t.indexOf("'") < 0) opts = [[t]];
-          else {
-            const rest = toks.slice(i + 1), w = nextWord(rest);
-            let m;
-            if ((m = /^(.+)'s$/.exec(t)) && t !== "let's") {
-              const aux = looksPP(w) && w !== "better" ? "has" : "is";
-              opts = PRON.has(m[1]) ? [[m[1], aux]] : [[m[1], aux], [t]];
-            } else if ((m = /^(.+)'d$/.exec(t))) {
-              opts = [[m[1], looksPP(w) ? "had" : "would"]];
-            } else opts = [aposReadings(t)[0]];
-          }
-          const next = [];
-          outs.forEach(o => opts.forEach(x => next.push(o.concat(x))));
-          outs = next;
-        });
-        return outs.map(o => o.join(" "));
-      }
-
-      /* ---------- 4. plantillas: (a|b) [x] {T:clave} @grupo ; ---------- */
-      const parseCache = {};
-      function parsePat(src) {
-        if (parseCache[src]) return parseCache[src];
-        let i = 0;
-        function seq(stops) {
-          const parts = []; let lit = "";
-          const flush = () => { if (lit) { parts.push({ t: "lit", v: lit }); lit = ""; } };
-          while (i < src.length) {
-            const c = src[i];
-            if (stops.indexOf(c) >= 0) break;
-            if (c === "(" || c === "[") {
-              flush(); i++;
-              const close = c === "(" ? ")" : "]";
-              const opts = [seq("|" + close)];
-              while (src[i] === "|") { i++; opts.push(seq("|" + close)); }
-              if (src[i] !== close) throw new Error("L3 pattern: falta '" + close + "' en: " + src);
-              i++;
-              parts.push({ t: c === "(" ? "alt" : "opt", opts: opts });
-            } else if (c === "{") {
-              flush();
-              const end = src.indexOf("}", i);
-              if (end < 0) throw new Error("L3 pattern: falta '}' en: " + src);
-              parts.push({ t: "slot", key: src.slice(i + 1, end).replace(/^\s*t\s*:/i, "").trim().toLowerCase() });
-              i = end + 1;
-            } else if (c === "@") {
-              flush();
-              const m = /^@([a-z0-9_]+)/i.exec(src.slice(i));
-              parts.push({ t: "ref", name: m[1].toLowerCase() });
-              i += m[0].length;
-            } else { lit += c; i++; }
-          }
-          flush();
-          return parts;
-        }
-        return (parseCache[src] = seq(""));
-      }
-      function synOf(name) {
-        const s = (cfg().syn || {})[name] || SYN[name];
-        if (!s) throw new Error("L3 pattern: grupo @" + name + " no definido");
-        return s;
-      }
-      function slotDef(key) {
-        const d = (cfg().slots || {})[key];
-        return d ? { forms: d.forms || key, pos: d.pos || ["start", "end"] } : { forms: autoText(key), pos: ["start", "end"] };
-      }
-
-      /* ---------- v1.1: plantillas automáticas a partir de frases normales ---------- */
-      let autoCache = null;
-      function autoRules() {
-        if (autoCache) return autoCache;
-        const a = cfg().auto || {}, members = [];
-        (a.syn || []).forEach(name => {
-          const g = synOf(name).trim();
-          if (!/^\([^()\[\]{}@]*\)$/.test(g)) throw new Error("L3 auto.syn: el grupo @" + name + " debe ser simple (a|b|c)");
-          g.slice(1, -1).split("|").forEach(m => { if (m.trim()) members.push({ m: m.trim().toLowerCase(), name: name }); });
-        });
-        members.sort((x, y) => y.m.length - x.m.length);
-        const esc = s => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&").replace(/\s+/g, "\\s+");
-        autoCache = {
-          synRx: members.length ? new RegExp("\\b(" + members.map(x => esc(x.m)).join("|") + ")\\b", "gi") : null,
-          synOf: m => (members.find(x => x.m === m.toLowerCase().replace(/\s+/g, " ")) || {}).name,
-          move: (a.move || []).length ? a.move.join("|") : null,
-          rewrite: (a.rewrite || []).map(([rx, to]) => [new RegExp(rx, "gi"), to])
-        };
-        return autoCache;
-      }
-      function autoText(s) {
-        if (!cfg().auto) return s;
-        const r = autoRules(), keep = [];
-        let t = s;
-        if (r.synRx) t = t.replace(r.synRx, m => { keep.push("@" + r.synOf(m)); return "\u0001" + (keep.length - 1) + "\u0002"; });
-        r.rewrite.forEach(([rx, to]) => { t = t.replace(rx, to); });
-        return t.replace(/\u0001(\d+)\u0002/g, (_, i) => keep[+i]);
-      }
-      function autoPattern(s) {
-        if (!cfg().auto) return s;
-        const r = autoRules();
-        let t = String(s).replace(/[()\[\]{}|@;]/g, " ").replace(/[.!?]+\s*$/, "").trim(), slot = "";
-        if (r.move) {
-          let m = new RegExp("(?:^|[ ,]+)(" + r.move + ")$", "i").exec(t);
-          if (m && m.index > 0) { slot = m[1]; t = t.slice(0, m.index); }
-          else if ((m = new RegExp("^(" + r.move + ")(?:[ ,]+)", "i").exec(t)) && m[0].length < t.length) { slot = m[1]; t = t.slice(m[0].length); }
-        }
-        t = autoText(t);
-        return slot ? t + " {T:" + slot.toLowerCase().replace(/\s+/g, " ") + "}" : t;
-      }
-      const OPEN = "⟦", SEP = "¦", CLOSE = "⟧";
-      function expandParts(parts, st) {
-        let acc = [""];
-        for (const p of parts) {
-          let opts;
-          if (p.t === "lit") opts = [p.v];
-          else if (p.t === "alt") opts = [].concat(...p.opts.map(s => expandParts(s, st)));
-          else if (p.t === "opt") opts = [""].concat(...p.opts.map(s => expandParts(s, st)));
-          else if (p.t === "ref") opts = expandParts(parsePat(synOf(p.name)), st);
-          else opts = expandParts(parsePat(slotDef(p.key).forms), st).map(f => " " + OPEN + p.key + SEP + f.trim() + CLOSE + " ");
-          const next = [];
-          outer: for (const a of acc) for (const o of opts) {
-            if (next.length >= MAX_VARIANTS) { st.over = true; break outer; }
-            next.push(a + o);
-          }
-          acc = next;
-        }
-        return acc;
-      }
-      // Mueve cada hueco {T:} al principio y/o al final de SU oración (las oraciones se separan con ;)
-      const SLOT_RX = new RegExp(OPEN + "([^" + SEP + "]*)" + SEP + "[^" + CLOSE + "]*" + CLOSE, "g");
-      function placeSlots(str) {
-        const segs = str.split(";").map(seg => {
-          let vars = [seg];
-          (seg.match(SLOT_RX) || []).forEach(whole => {
-            const key = whole.slice(1, whole.indexOf(SEP)), pos = slotDef(key).pos, more = [];
-            vars.forEach(v => {
-              const sin = v.replace(whole, " ");
-              if (pos.indexOf("start") >= 0) more.push(whole + " " + sin);
-              if (pos.indexOf("end") >= 0) more.push(sin + " " + whole);
-            });
-            vars = vars.concat(more);
-          });
-          return vars;
-        });
-        let outs = [""];
-        segs.forEach(vs => { const n = []; outs.forEach(o => vs.forEach(v => n.push(o + " " + v))); outs = n; });
-        return outs.map(o => o.replace(new RegExp(OPEN + "[^" + SEP + "]*" + SEP, "g"), " ").replace(new RegExp(CLOSE, "g"), " "));
-      }
-      function expandPattern(pat, st) {
-        st = st || {};
-        const out = [];
-        expandParts(parsePat(pat), st).forEach(s => placeSlots(s).forEach(x => out.push(x.replace(/\s+/g, " ").trim())));
-        return out;
-      }
-
-      /* ---------- 5. respuestas aceptadas de una pregunta (perezoso, una sola vez) ---------- */
-      function prepare(q) {
-        if (q._l3trie) return q.accepted;
-        const set = new Set(), st = { over: false };
-        const add = s => modelReadings(s).forEach(c => {
-          if (!c) return;
-          if (set.size >= MAX_VARIANTS) st.over = true; else set.add(c);
-        });
-        (q.pat ? [].concat(q.pat) : []).forEach(p => expandPattern(p, st).forEach(add));
-        (q.answers || []).concat(q.alts || []).forEach(s => expandPattern(autoPattern(s), st).forEach(add));
-        if (st.over) console.warn("[L3] " + (q.qid || "?") + ": more than " + MAX_VARIANTS + " variants; list truncated. Simplify its pattern.");
-        const trie = new Map();
-        set.forEach(s => {
-          let node = trie;
-          s.split(" ").forEach(w => { if (!node.has(w)) node.set(w, new Map()); node = node.get(w); });
-          node.set("$", true);
-        });
-        // no enumerables: JSON.stringify, localStorage y Firebase nunca los ven
-        Object.defineProperty(q, "accepted", { value: set, enumerable: false, configurable: true, writable: true });
-        Object.defineProperty(q, "_l3trie", { value: trie, enumerable: false, configurable: true, writable: true });
-        return set;
-      }
-      function prepareModule(mod) { (mod.questions || []).forEach(q => { if (q.type === "translate") prepare(q); }); }
-
-      /* ---------- 6. corrección ---------- */
-      function grade(userValue, q) {
-        const toks = baseTokens(userValue);
-        if (toks.length < 2) return false;                 // vacía o una sola palabra
-        prepare(q);
-        const readings = toks.map((t, i) => studentReadings(t, toks[i + 1]));
-        const n = readings.length;
-        function walk(i, node) {
-          if (i === n) return node.has("$");
-          for (const r of readings[i]) {
-            let nd = node;
-            for (const w of r) { nd = nd.get(w); if (!nd) break; }
-            if (nd && walk(i + 1, nd)) return true;
-          }
-          return false;
-        }
-        return walk(0, q._l3trie);
-      }
-
-      return { grade: grade, prepare: prepare, prepareModule: prepareModule, expandPattern: expandPattern,
-               prep: prep, baseTokens: baseTokens, modelReadings: modelReadings, studentReadings: studentReadings,
-               autoPattern: autoPattern,
-               MAX_VARIANTS: MAX_VARIANTS };
+    // Todas las alternativas de una linea de SWAPS se reducen a la primera,
+    // asi que da igual cual escriba el alumno.
+    const SWAP_RULES = (function () {
+      const list = [];
+      SWAPS.forEach(g => { g.slice(1).forEach(alt => list.push({ alt: alt, to: g[0] })); });
+      list.sort((a, b) => b.alt.length - a.alt.length);
+      return list.map(r => ({
+        re: new RegExp("\\b" + r.alt.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "\\b", "g"),
+        to: r.to
+      }));
     })();
 
-    function gradeTranslation(userValue, q) { return L3.grade(userValue, q); }
-    /* ===== L3-ENGINE v1.1 · END ===== */
+    function canonTranslation(str) {
+      let out = normalizeLoose(str).replace(/[\u2013\u2014]/g, "-");
+      out = out.replace(/\boclock\b/g, " ");        // "at eight" = "at eight o'clock"
+      SWAP_RULES.forEach(r => { out = out.replace(r.re, r.to); });
+      const times = [];
+      out = out.replace(TIME_RX, m => { times.push(m.trim()); return " "; });
+      return (out + " " + times.sort().join(" ")).replace(/\s+/g, " ").trim();
+    }
+
+    // Palabras de pegamento: no cuentan al comparar. Asi valen igual
+    // "lent Sara my bike" y "lent my bike to Sara", o que falte un articulo.
+    // "for" y "since" NO estan aqui a proposito: hay que escribirlos bien.
+    const GLUE = ["a", "an", "the", "to", "of", "at", "in", "on", "from", "with",
+                  "into", "onto", "and", "that", "up", "out", "down", "off", "away", "back", "as"];
+
+    function contentBag(canon) {
+      return canon.split(" ").filter(w => w && GLUE.indexOf(w) < 0).sort().join(" ");
+    }
+
+    function gradeTranslation(userValue, q) {
+      if (!normalizeLoose(userValue)) return false;
+      const user = canonTranslation(userValue);
+      if (q.answers.some(a => canonTranslation(a) === user)) return true;
+      const bag = contentBag(user);
+      return q.answers.some(a => contentBag(canonTranslation(a)) === bag);
+    }
 
     /* ---------- pista de vocabulario del nivel 3 ---------- */
     function stripAccents(t) { return (t || "").normalize("NFD").replace(/[\u0300-\u036f]/g, ""); }
@@ -2070,7 +1652,6 @@
     let quizSeconds = 0;
     let answered = false;
     let attemptLog = [];
-    let retryState = null;   // RETRY-WRONG v1: { round, carried } cuando se repiten solo las falladas
 
     function escapeHtml(str) {
       return (str || "").toString().replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
@@ -2156,16 +1737,11 @@
           <p class="text-xs md:text-sm font-black uppercase tracking-widest text-slate-400 mb-2">Verb in Spanish</p>
           <p class="text-2xl md:text-4xl font-extrabold text-white mb-6" lang="es">${escapeHtml(q.prompt)}</p>
           <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-            ${labels.map(([lab, cls], i) => {
-              const two = i === 1 && PAST_BOTH[q.verb.key];     // BE: una casilla para cada forma (was / were)
-              const box = n => `<input type="text" id="ans_${n}" class="quiz-input gap-input wide text-lg md:text-2xl${two && n === 2 ? " mt-2" : ""}" ${inp}>`;
-              const n0 = i + (PAST_BOTH[q.verb.key] && i === 2 ? 1 : 0);
-              return `
+            ${labels.map(([lab, cls], i) => `
               <div>
-                <label class="block text-xs md:text-sm font-black uppercase tracking-wider ${cls} mb-2">${lab}${two ? " \u00b7 2 forms" : ""}</label>
-                ${two ? box(1) + box(2) : box(n0)}
-              </div>`;
-            }).join("")}
+                <label class="block text-xs md:text-sm font-black uppercase tracking-wider ${cls} mb-2">${lab}</label>
+                <input type="text" id="ans_${i}" class="quiz-input gap-input wide text-lg md:text-2xl" ${inp}>
+              </div>`).join("")}
           </div>`;
       }
       if (q.type === "gap") {
@@ -2194,7 +1770,6 @@
 
     function modelAnswer(q) {
       if (q.type === "forms") return q.answers.join(" \u00b7 ");
-      if (q.type === "translate") return q.answers.slice(0, 3).join("  |  ");   // principal + máx. 2 alternativas
       return q.answers.join("  |  ");
     }
 
@@ -2649,8 +2224,7 @@
         idx: currentQuestionIdx + (answered ? 1 : 0),
         score: currentScore,
         seconds: quizSeconds,
-        log: attemptLog,
-        retry: retryState
+        log: attemptLog
       }));
     }
 
@@ -2661,21 +2235,18 @@
       if (saved) {
         try {
           const p = JSON.parse(saved);
-          const n = (p.order || []).length || mod.size;
-          if (p.idx > 0 && p.idx < n &&
-              confirm(`You have an unfinished attempt (${p.idx} of ${n} questions done).\n\nOK = continue where you stopped\nCancel = start again from the beginning`)) {
+          if (p.idx > 0 && p.idx < mod.size &&
+              confirm(`You have an unfinished attempt (${p.idx} of ${mod.size} questions done).\n\nOK = continue where you stopped\nCancel = start again from the beginning`)) {
             currentQuestions = p.order.map(id => mod.questions.find(q => q.qid === id)).filter(Boolean);
             currentQuestionIdx = p.idx;
             currentScore = p.score;
             quizSeconds = p.seconds || 0;
             attemptLog = p.log || [];
-            retryState = p.retry || null;
-            resumed = currentQuestions.length === (retryState ? n : mod.size);
+            resumed = currentQuestions.length === mod.size;
           }
         } catch (e) {}
       }
       if (!resumed) {
-        retryState = null;
         storageDel(progressKey(mod.id));
         currentQuestions = shuffle(mod.questions).slice(0, mod.size);
         currentQuestionIdx = 0;
@@ -2683,40 +2254,12 @@
         quizSeconds = 0;
         attemptLog = [];
       }
-      if (mod.type === "translate") setTimeout(() => L3.prepareModule(mod), 50);   // L3-ENGINE: prepara las variantes en segundo plano
-      document.getElementById("quizCategoryTitle").innerText = mod.title + (retryState ? " \u00b7 \ud83c\udfaf Only your mistakes" : "");
+      document.getElementById("quizCategoryTitle").innerText = mod.title;
       showView("viewQuiz");
       window.scrollTo(0, 0);
       startTimer();
       renderQuestion();
     }
-
-    /* ===== RETRY-WRONG v1 · START (igual en todas las apps) =====
-       Si el alumno no aprueba, puede repetir SOLO las preguntas que ha fallado.
-       Las acertadas se conservan y la nota se calcula siempre sobre el módulo entero. */
-    function wrongQuestionsOf(mod, log) {
-      return log.filter(a => !a.ok)
-        .map(a => mod.questions.find(q => q.qid === a.qid || (!a.qid && questionPromptText(q) === a.prompt)))
-        .filter(Boolean);
-    }
-    function startRetryWrong() {
-      const mod = currentModule();
-      const qs = wrongQuestionsOf(mod, attemptLog);   // attemptLog = registro completo del intento que acaba de terminar
-      if (!qs.length) { startCurrentQuiz(true); return; }
-      retryState = { round: (retryState ? retryState.round : 1) + 1, carried: attemptLog.filter(a => a.ok) };
-      storageDel(progressKey(mod.id));
-      currentQuestions = shuffle(qs);
-      currentQuestionIdx = 0;
-      currentScore = 0;
-      attemptLog = [];                                 // quizSeconds sigue sumando: el tiempo es el de todo el intento
-      if (mod.type === "translate" && typeof L3 !== "undefined") setTimeout(() => L3.prepareModule(mod), 50);
-      document.getElementById("quizCategoryTitle").innerText = mod.title + " \u00b7 \ud83c\udfaf Only your mistakes";
-      showView("viewQuiz");
-      window.scrollTo(0, 0);
-      startTimer();
-      renderQuestion();
-    }
-    /* ===== RETRY-WRONG v1 · END ===== */
 
     function startTimer() {
       if (quizTimerInterval) clearInterval(quizTimerInterval);
@@ -2807,7 +2350,7 @@
       if (ok) currentScore++;
 
       attemptLog.push({
-        qid: q.qid, type: q.type, prompt: questionPromptText(q), user: values.join(" \u00b7 "),
+        type: q.type, prompt: questionPromptText(q), user: values.join(" \u00b7 "),
         correct: modelAnswer(q), ok: ok
       });
       saveProgress();
@@ -2821,7 +2364,7 @@
       } else if (q.type === "gap") {
         detail = `<div class="mt-3 text-base md:text-xl text-slate-200 font-semibold">${escapeHtml(q.text.replace("___", q.answers[0]))}</div>`;
       } else {
-        detail = `<div class="mt-3 text-base md:text-xl text-slate-200 font-semibold">Also accepted:<ul class="list-disc list-inside mt-1 space-y-1">${q.answers.slice(0, 3).map(a => `<li class="text-slate-300 text-base">${escapeHtml(a)}</li>`).join("")}</ul></div>`;
+        detail = `<div class="mt-3 text-base md:text-xl text-slate-200 font-semibold">Also accepted:<ul class="list-disc list-inside mt-1 space-y-1">${q.answers.slice(0, 5).map(a => `<li class="text-slate-300 text-base">${escapeHtml(a)}</li>`).join("")}</ul></div>`;
       }
 
       const feedbackBox = document.getElementById("quizFeedback");
@@ -2865,10 +2408,7 @@
       clearInterval(quizTimerInterval);
       const mod = currentModule();
       storageDel(progressKey(mod.id));
-      if (retryState) attemptLog = retryState.carried.concat(attemptLog);   // RETRY-WRONG: módulo completo
-      const retryRound = retryState ? retryState.round : 1;
-      const total = attemptLog.length;
-      currentScore = attemptLog.filter(a => a.ok).length;
+      const total = currentQuestions.length;
       const percentage = Math.round((currentScore / total) * 100);
       const timeStr = `${Math.floor(quizSeconds / 60)}m ${quizSeconds % 60}s`;
       const nowStr = new Date().toLocaleString("en-GB", { dateStyle: "short", timeStyle: "short" });
@@ -2888,7 +2428,6 @@
         exerciseType: "irregular_verbs_levels",
         score: percentage,
         rawScore: `${currentScore}/${total}`,
-        retryRound: retryRound,
         passed: passed,
         secondsSpent: quizSeconds,
         timeSpent: timeStr,
@@ -2901,7 +2440,7 @@
         ? `
           <div class="bg-emerald-950/50 border-2 border-emerald-400/60 rounded-2xl p-5 md:p-6 text-center space-y-3">
             <h3 class="text-2xl md:text-3xl font-black text-emerald-300">🎉 CONGRATULATIONS, ${escapeHtml(currentUser.firstName.toUpperCase())}!</h3>
-            <p class="text-slate-100 text-base md:text-xl">You have passed <strong>${mod.title}</strong>${retryRound > 1 ? ` after repeating your mistakes (round ${retryRound})` : ""}. Well done!</p>
+            <p class="text-slate-100 text-base md:text-xl">You have passed <strong>${mod.title}</strong>. Well done!</p>
             <div class="bg-amber-400/15 border-2 border-amber-400/60 rounded-xl p-4 text-amber-200 text-base md:text-xl font-bold">
               <i class="fa-solid fa-camera"></i> Now take a <strong>SCREENSHOT</strong> of this result and send it to your teacher through <strong>Google Classroom</strong>.
             </div>
@@ -2909,9 +2448,8 @@
         : `
           <div class="bg-rose-950/40 border-2 border-rose-500/50 rounded-2xl p-5 md:p-6 text-left space-y-2">
             <p class="text-rose-200 text-lg md:text-xl font-black"><i class="fa-solid fa-rotate-right"></i> You have to try again!</p>
-            <p class="text-slate-200 text-base md:text-lg">You got <strong>${currentScore} out of ${total}</strong>${retryRound > 1 ? ` (round ${retryRound})` : ""}. You need <strong class="text-amber-300">at least ${passMark(mod)}% (${Math.ceil(total * passMark(mod) / 100)} out of ${total})</strong> to pass.
+            <p class="text-slate-200 text-base md:text-lg">You got <strong>${currentScore} out of ${total}</strong>. You need <strong class="text-amber-300">at least ${passMark(mod)}% (${Math.ceil(total * passMark(mod) / 100)} out of ${total})</strong> to pass.
             Remember: <strong>for your work to count, you must pass every level of every module</strong>.</p>
-            <p class="text-amber-200 text-base md:text-lg font-bold">🎯 You do not need to start again: you can repeat <strong>only the ${total - currentScore} question${total - currentScore === 1 ? "" : "s"} you got wrong</strong>. The ones you got right are kept.</p>
             <p class="text-slate-300 text-base md:text-lg">Study the verb list again, look at your mistakes below and have another go. You can do it! 💪
             When you pass, take a screenshot of your result and send it to your teacher through Google Classroom.</p>
           </div>`;
@@ -2937,8 +2475,7 @@
           <i class="fa-solid fa-cloud-arrow-up"></i> Saving to the cloud...
         </div>
         <div class="pt-4 flex flex-col md:flex-row gap-3 justify-center no-print">
-          ${!passed && total - currentScore > 0 ? `<button onclick="startRetryWrong()" class="bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-lg px-8 py-4 rounded-2xl transition order-first">🎯 Repeat only the ${total - currentScore} I got wrong</button>` : ""}
-          ${!passed ? `<button onclick="startCurrentQuiz(true)" class="bg-rose-600 hover:bg-rose-500 text-white font-black text-lg px-8 py-4 rounded-2xl transition">🔁 Try the whole module again</button>` : ""}
+          ${!passed ? `<button onclick="startCurrentQuiz(true)" class="bg-rose-600 hover:bg-rose-500 text-white font-black text-lg px-8 py-4 rounded-2xl transition order-first">🔁 Try this module again</button>` : ""}
           <button onclick="goHome()" class="${passed ? "bg-emerald-600 hover:bg-emerald-500" : "bg-slate-800 hover:bg-slate-700"} text-white font-black text-lg px-8 py-4 rounded-2xl transition">Back to Dashboard</button>
         </div>`;
 
